@@ -3,67 +3,67 @@
     {
       "id": "bench-press",
       "description": "Person doing bench press exercise.",
-      "imageUrl": "https://images.unsplash.com/photo-1574680096145-f844349f4b6f?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&q=80",
       "imageHint": "bench press"
     },
     {
       "id": "push-up",
       "description": "Person doing a push-up.",
-      "imageUrl": "https://images.unsplash.com/photo-1599421498111-ad70be4900a3?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
       "imageHint": "push up"
     },
     {
       "id": "pull-up",
       "description": "Person doing a pull-up.",
-      "imageUrl": "https://images.unsplash.com/photo-1632757266938-f9644a3e2e77?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800&q=80",
       "imageHint": "pull up"
     },
     {
       "id": "deadlift",
       "description": "Person performing a deadlift.",
-      "imageUrl": "https://images.unsplash.com/photo-1584862991102-6d40c5b3c582?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1584863265045-f9d943407b02?w=800&q=80",
       "imageHint": "deadlift weightlifting"
     },
     {
       "id": "squat",
       "description": "Person performing a squat.",
-      "imageUrl": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80",
       "imageHint": "squat fitness"
     },
     {
       "id": "lunges",
       "description": "Person doing lunges.",
-      "imageUrl": "https://images.unsplash.com/photo-1616803689943-5601631c7fec?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1434608519344-49d77a699e1d?w=800&q=80",
       "imageHint": "lunge exercise"
     },
     {
       "id": "bicep-curl",
       "description": "Person doing a bicep curl.",
-      "imageUrl": "https://images.unsplash.com/photo-1620188526517-521921285554?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1581009137042-c552e485697a?w=800&q=80",
       "imageHint": "bicep curl"
     },
     {
       "id": "plank",
       "description": "Person holding a plank position.",
-      "imageUrl": "https://images.unsplash.com/photo-1544216717-3bbf52512659?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1598971457999-ca4ef48a9a71?w=800&q=80",
       "imageHint": "plank core"
     },
     {
       "id": "running",
       "description": "Person running outdoors.",
-      "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1530143260327-48b9c379a06d?w=800&q=80",
       "imageHint": "running marathon"
     },
     {
       "id": "yoga",
       "description": "Person in a yoga pose.",
-      "imageUrl": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1591291621223-5d278c1c548a?w=800&q=80",
       "imageHint": "yoga pose"
     },
     {
       "id": "user-avatar",
       "description": "Placeholder for user avatar.",
-      "imageUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=800&q=80",
+      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
       "imageHint": "portrait person"
     }
   ]
