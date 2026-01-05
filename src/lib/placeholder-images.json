@@ -83,6 +83,30 @@
       "description": "Image representing recovery or rest.",
       "imageUrl": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "gym weights"
+    },
+    {
+      "id": "calories-bg",
+      "description": "Image representing calories.",
+      "imageUrl": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "healthy food"
+    },
+    {
+      "id": "protein-bg",
+      "description": "Image representing protein.",
+      "imageUrl": "https://images.unsplash.com/photo-1529692236671-f1f6b5f46b54?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "grilled chicken"
+    },
+    {
+      "id": "carbs-bg",
+      "description": "Image representing carbohydrates.",
+      "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop",
+      "imageHint": "fresh bread"
+    },
+    {
+      "id": "fats-bg",
+      "description": "Image representing fats.",
+      "imageUrl": "https://images.unsplash.com/photo-1615485925332-f4a6ad5a1839?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "avocado toast"
     }
   ]
 }

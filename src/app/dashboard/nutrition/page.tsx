@@ -2,6 +2,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { nutritionPlan } from '@/lib/data';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Apple, Beef, Carrot, Drumstick } from 'lucide-react';
 import Image from 'next/image';
 
@@ -11,6 +12,33 @@ const icons: { [key: string]: React.ReactNode } = {
   Dinner: <Beef className="h-6 w-6 text-primary" />,
   Snacks: <Apple className="h-6 w-6 text-primary" />,
 };
+
+const nutritionCards = [
+  {
+    title: 'Daily Calories',
+    description: 'Target Intake',
+    value: nutritionPlan.summary.calories,
+    imageId: 'calories-bg',
+  },
+  {
+    title: 'Protein',
+    description: 'Macronutrient Goal',
+    value: nutritionPlan.summary.protein,
+    imageId: 'protein-bg',
+  },
+  {
+    title: 'Carbohydrates',
+    description: 'Macronutrient Goal',
+    value: nutritionPlan.summary.carbs,
+    imageId: 'carbs-bg',
+  },
+  {
+    title: 'Fats',
+    description: 'Macronutrient Goal',
+    value: nutritionPlan.summary.fats,
+    imageId: 'fats-bg',
+  }
+];
 
 export default function NutritionPage() {
   return (
@@ -35,42 +63,32 @@ export default function NutritionPage() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Daily Calories</CardTitle>
-            <CardDescription>Target Intake</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold">{nutritionPlan.summary.calories}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Protein</CardTitle>
-            <CardDescription>Macronutrient Goal</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold">{nutritionPlan.summary.protein}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Carbohydrates</CardTitle>
-            <CardDescription>Macronutrient Goal</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold">{nutritionPlan.summary.carbs}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Fats</CardTitle>
-            <CardDescription>Macronutrient Goal</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-4xl font-bold">{nutritionPlan.summary.fats}</p>
-          </CardContent>
-        </Card>
+        {nutritionCards.map((card, index) => {
+          const image = PlaceHolderImages.find((img) => img.id === card.imageId);
+          return (
+            <Card key={card.title} className="relative overflow-hidden text-white card-hover" style={{ animation: `fade-in-up 0.5s ${index * 0.1 + 0.2}s ease-out forwards`, opacity: 0 }}>
+              {image && (
+                <Image
+                  src={image.imageUrl}
+                  alt={card.title}
+                  fill
+                  className="object-cover"
+                  data-ai-hint={image.imageHint}
+                />
+              )}
+              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="relative">
+                <CardHeader>
+                  <CardTitle>{card.title}</CardTitle>
+                  <CardDescription className="text-white/80">{card.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-4xl font-bold">{card.value}</p>
+                </CardContent>
+              </div>
+            </Card>
+          );
+        })}
       </div>
 
       <Card>
