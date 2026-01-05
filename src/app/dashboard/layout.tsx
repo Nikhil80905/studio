@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import { LogoIcon } from '@/components/icons';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
-import { Search } from 'lucide-react';
-import { Input } from '@/components/ui/input';
 import { Notifications } from '@/components/notifications';
+import { SearchInput } from '@/components/search-input';
 
 function DashboardHeader() {
   return (
@@ -29,14 +28,7 @@ function NavigationBar() {
       <div className="flex-1">
         <MainNav />
       </div>
-      <div className="relative w-full max-w-sm">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-        <Input
-          type="search"
-          placeholder="Search workouts, exercises..."
-          className="pl-9"
-        />
-      </div>
+      <SearchInput />
     </div>
   );
 }
