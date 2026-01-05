@@ -3,23 +3,26 @@
 import { useState, useEffect } from 'react';
 import { LogoIcon } from '@/components/icons';
 import { MainNav } from '@/components/main-nav';
-import {
-  SidebarProvider,
-  Sidebar,
-  SidebarHeader,
-  SidebarContent,
-  SidebarFooter,
-  SidebarTrigger,
-} from '@/components/ui/sidebar';
 import { UserNav } from '@/components/user-nav';
 
 function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm sm:justify-end">
-      <SidebarTrigger className="sm:hidden" />
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
+       <div className="flex items-center gap-2">
+            <LogoIcon className="h-8 w-8 text-primary" />
+            <h1 className="text-xl font-semibold">FitZen</h1>
+        </div>
       <UserNav />
     </header>
   );
+}
+
+function NavigationBar() {
+    return (
+        <div className="sticky top-16 z-30 flex h-14 items-center justify-center border-b bg-background/80 backdrop-blur-sm">
+            <MainNav />
+        </div>
+    )
 }
 
 export default function DashboardLayout({
@@ -38,27 +41,12 @@ export default function DashboardLayout({
   }
   
   return (
-    <SidebarProvider>
-      <div className="relative min-h-screen md:flex">
-        <Sidebar>
-          <SidebarHeader>
-            <div className="flex items-center gap-2">
-              <LogoIcon className="h-8 w-8 text-primary" />
-              <h1 className="text-xl font-semibold">FitZen</h1>
-            </div>
-          </SidebarHeader>
-          <SidebarContent>
-            <MainNav />
-          </SidebarContent>
-          <SidebarFooter>{/* Can add footer items here */}</SidebarFooter>
-        </Sidebar>
-        <div className="flex flex-1 flex-col md:ml-[var(--sidebar-width)] transition-[margin-left] duration-300 ease-in-out group-data-[state=collapsed]/sidebar-wrapper:md:ml-[5rem]">
-          <DashboardHeader />
-          <main className="flex-1 p-6 md:p-10">
+      <div className="relative min-h-screen flex flex-col">
+        <DashboardHeader />
+        <NavigationBar />
+        <main className="flex-1 p-6 md:p-10">
             {children}
-          </main>
-        </div>
+        </main>
       </div>
-    </SidebarProvider>
   );
 }

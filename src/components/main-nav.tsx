@@ -14,11 +14,7 @@ import {
 import { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
-import {
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-} from '@/components/ui/sidebar';
+import { Button } from './ui/button';
 
 const links = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -43,25 +39,25 @@ export function MainNav() {
   }
 
   return (
-    <SidebarMenu>
+    <nav className="flex items-center space-x-2 lg:space-x-4 overflow-x-auto pb-2 sm:pb-0">
       {links.map((link) => (
-        <SidebarMenuItem key={link.href}>
-          <Link href={link.href} className="flex-1">
-            <SidebarMenuButton
-              isActive={pathname === link.href}
-              className="w-full justify-start relative"
-              tooltip={link.label}
-              variant={'ghost'}
-            >
-              {pathname === link.href && (
-                <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 bg-secondary rounded-r-full"></span>
-              )}
-              <link.icon className="h-5 w-5" />
-              <span className={cn(pathname === link.href && 'text-secondary-foreground')}>{link.label}</span>
-            </SidebarMenuButton>
+        <Button
+            key={link.href}
+            asChild
+            variant="ghost"
+            className={cn(
+                "text-sm font-medium transition-colors hover:text-primary relative",
+                pathname === link.href ? "text-primary" : "text-muted-foreground"
+            )}
+        >
+          <Link href={link.href}>
+            {link.label}
+            {pathname === link.href && (
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-0.5 bg-primary rounded-full"></span>
+            )}
           </Link>
-        </SidebarMenuItem>
+        </Button>
       ))}
-    </SidebarMenu>
+    </nav>
   );
 }
