@@ -91,7 +91,7 @@ export function WorkoutForm() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-3">
-      <Card className="lg:col-span-1">
+      <Card className="lg:col-span-1 bg-card/80 backdrop-blur-sm border-white/10">
         <CardHeader>
           <CardTitle>Create Your Workout</CardTitle>
           <CardDescription>
@@ -105,7 +105,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="goal"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="animate-fade-in" style={{animationDelay: '100ms'}}>
                     <FormLabel>Fitness Goal</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
@@ -128,7 +128,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="equipment"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="animate-fade-in" style={{animationDelay: '200ms'}}>
                     <FormLabel>Available Equipment</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
@@ -151,7 +151,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="activityLevel"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="animate-fade-in" style={{animationDelay: '300ms'}}>
                     <FormLabel>Activity Level</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
@@ -174,7 +174,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="duration"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="animate-fade-in" style={{animationDelay: '400ms'}}>
                     <FormLabel>Workout Duration: {field.value} minutes</FormLabel>
                     <FormControl>
                       <Slider
@@ -191,7 +191,7 @@ export function WorkoutForm() {
                 )}
               />
 
-              <Button type="submit" disabled={isLoading} className="w-full">
+              <Button type="submit" disabled={isLoading} className="w-full !mt-8 animate-fade-in" style={{animationDelay: '500ms'}}>
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Generate Plan
               </Button>
@@ -225,8 +225,8 @@ export function WorkoutForm() {
                 return (
                 <Card 
                   key={index}
-                  className="card-hover overflow-hidden"
-                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards', opacity: 0 }}
+                  className="card-hover overflow-hidden animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <CardContent className="p-0 flex items-center gap-4">
                      <div className="relative aspect-square w-24 h-24 flex-shrink-0">
@@ -262,8 +262,9 @@ export function WorkoutForm() {
         )}
 
         {!generatedPlan && !isLoading && (
-           <div className="flex h-full min-h-[400px] w-full items-center justify-center rounded-lg border border-dashed bg-card/50">
+           <div className="flex h-full min-h-[400px] w-full items-center justify-center rounded-lg border-2 border-dashed border-muted/30 bg-card/50">
             <div className="text-center text-muted-foreground animate-fade-in">
+              <Dumbbell className="mx-auto h-12 w-12 text-muted-foreground/50 mb-4" />
               <h3 className="text-lg font-semibold">Your New Plan Awaits</h3>
               <p className="text-sm">Fill out the form to get started.</p>
             </div>
