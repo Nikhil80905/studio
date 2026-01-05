@@ -33,13 +33,13 @@ export default function DashboardLayout({
             {/* Can add footer items here */}
           </SidebarFooter>
         </Sidebar>
-        <SidebarInset>
+        <div className="md:ml-[--sidebar-width] transition-[margin-left] duration-300 ease-in-out">
           <header className="flex h-14 items-center justify-between border-b border-border/50 bg-background/80 px-4 backdrop-blur-sm sm:justify-end">
             <SidebarTrigger className="sm:hidden" />
             <UserNav />
           </header>
           <main className="flex-1 p-6 md:p-10">{children}</main>
-        </SidebarInset>
+        </div>
       </div>
     </SidebarProvider>
   );
