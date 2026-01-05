@@ -9,7 +9,7 @@ export default function DashboardPage() {
     <div className="flex flex-col gap-6">
       <GreetingCard />
       <StatsCards />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <WeeklyActivityChart />
         </div>
