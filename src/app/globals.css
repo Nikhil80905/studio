@@ -13,27 +13,27 @@
     --popover: 0 0% 100%;
     --popover-foreground: 224 71% 10%;
 
-    --primary: 340 90% 75%; /* Light Pink */
-    --primary-foreground: 340 90% 15%;
+    --primary: 210 90% 50%; /* Electric Blue */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 90% 55%; /* Yellow */
-    --secondary-foreground: 224 71% 10%;
-
+    --secondary: 330 85% 60%; /* Pink */
+    --secondary-foreground: 0 0% 100%;
+    
     --muted: 220 20% 90%;
     --muted-foreground: 220 10% 45%;
-
-    --accent: 340 80% 96%; /* Lighter Pink */
-    --accent-foreground: 340 85% 30%;
+    
+    --accent: 210 80% 96%; /* Lighter Blue */
+    --accent-foreground: 210 85% 30%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 20% 88%;
     --input: 220 20% 88%;
-    --ring: 340 90% 75%; /* Light Pink */
+    --ring: 210 90% 50%; /* Electric Blue */
 
-    --chart-1: 340 90% 75%;
-    --chart-2: 45 90% 55%;
+    --chart-1: 210 90% 50%;
+    --chart-2: 330 85% 60%;
     --chart-3: 30 90% 50%;
     --chart-4: 280 85% 60%;
     --chart-5: 340 90% 65%;
@@ -42,36 +42,36 @@
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 220 15% 5%;
+    --foreground: 210 20% 98%;
 
-    --card: 220 40% 8%;
-    --card-foreground: 213 31% 91%;
+    --card: 220 15% 10%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
+    --popover: 220 15% 5%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 330 85% 60%; /* Pink */
+    --primary: 210 90% 60%; /* Electric Blue */
     --primary-foreground: 0 0% 100%;
+    
+    --secondary: 330 85% 60%; /* Pink */
+    --secondary-foreground: 0 0% 100%;
 
-    --secondary: 45 90% 55%; /* Yellow */
-    --secondary-foreground: 224 71% 10%;
-
-    --muted: 215 28% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 215 28% 17%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 65%;
+    
+    --accent: 220 15% 15%;
     --accent-foreground: 210 20% 98%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
-    --ring: 330 85% 60%; /* Pink */
+    --border: 220 15% 15%;
+    --input: 220 15% 15%;
+    --ring: 210 90% 60%; /* Electric Blue */
 
-    --chart-1: 330 85% 60%;
-    --chart-2: 45 90% 55%;
+    --chart-1: 210 90% 60%;
+    --chart-2: 330 85% 60%;
     --chart-3: 30 90% 50%;
     --chart-4: 280 85% 60%;
     --chart-5: 340 90% 65%;
@@ -94,11 +94,32 @@
 @layer components {
   .card-hover {
     @apply transition-all duration-300 ease-in-out;
+    position: relative;
+    overflow: visible;
+  }
+  .card-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    background: linear-gradient(120deg, hsl(var(--primary) / 0.1), transparent 50%, hsl(var(--secondary) / 0.1)) border-box;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) padding-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .card-hover:hover::before {
+    opacity: 1;
   }
   .card-hover:hover {
-    @apply transform -translate-y-1 shadow-lg shadow-primary/10;
-    --tw-shadow-color: hsl(var(--primary) / 0.1);
-    box-shadow: 0 0 15px 2px var(--tw-shadow-color), 0 4px 6px -1px var(--tw-shadow-color);
+    @apply transform -translate-y-1;
   }
 }
 
@@ -134,7 +155,7 @@
   @keyframes quote-slide-up-in {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(100%);
     }
     100% {
       opacity: 1;
@@ -149,7 +170,7 @@
     }
     100% {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-100%);
     }
   }
 
