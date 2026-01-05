@@ -31,7 +31,7 @@ export default function DashboardLayout({
           <SidebarFooter>{/* Can add footer items here */}</SidebarFooter>
         </Sidebar>
         <div className="flex flex-col md:ml-[--sidebar-width] transition-[margin-left] duration-300 ease-in-out">
-          <header className="flex h-14 items-center justify-between border-b border-border/50 bg-background/80 px-4 backdrop-blur-sm sm:justify-end">
+          <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-border/50 bg-background/80 px-4 backdrop-blur-sm sm:justify-end">
             <SidebarTrigger className="sm:hidden" />
             <UserNav />
           </header>
