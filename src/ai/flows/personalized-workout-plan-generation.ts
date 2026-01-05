@@ -68,24 +68,32 @@ const workoutPlanPrompt = ai.definePrompt({
   name: 'workoutPlanPrompt',
   input: {schema: WorkoutPlanInputSchema},
   output: {schema: WorkoutPlanOutputSchema},
-  prompt: `You are a personal fitness trainer who creates workout plans tailored to the user.
+  prompt: `You are a world-class personal fitness trainer AI. Your task is to create a highly personalized and effective workout plan based on the user's details.
 
-  Consider the following information about the user:
+  The output MUST be a valid JSON object that strictly conforms to the provided output schema. Do not add any extra commentary or text outside of the JSON structure.
 
-  Goal: {{{goal}}}
-  Equipment: {{{equipment}}}
-  Duration: {{{duration}}} minutes
-  Activity Level: {{{activityLevel}}}
-  Workout history: {{{workoutHistory}}}
-  Weight: {{{weight}}} KG
-  Height: {{{height}}} CM
-  Age: {{{age}}} years
-  Gender: {{{gender}}}
+  User Details:
+  - Fitness Goal: {{{goal}}}
+  - Available Equipment: {{{equipment}}}
+  - Preferred Workout Duration: {{{duration}}} minutes
+  - Activity Level: {{{activityLevel}}}
+  - Workout History: {{{workoutHistory}}}
+  - Weight: {{{weight}}} kg
+  - Height: {{{height}}} cm
+  - Age: {{{age}}} years
+  - Gender: {{{gender}}}
 
-  Create a structured workout plan that is tailored to this user and their needs.
-  Consider the users height, weight, age, gender, and goals, when providing the workout plan, such that it is safe for them.
-  The output must be a JSON object that conforms to the output schema.
-  The plan should include a title, a short description, and a list of exercises with their name, sets, reps, and a brief description.
+  Workout Plan Requirements:
+  1.  **Title**: Create a catchy, motivating title for the workout plan.
+  2.  **Description**: Write a short, encouraging description of the plan and its benefits.
+  3.  **Exercises**: Generate a list of 5-7 exercises appropriate for the user's goal, equipment, and experience level.
+      - For each exercise, provide:
+        - \`name\`: The name of the exercise.
+        - \`sets\`: The number of sets (e.g., "3 sets").
+        - \`reps\`: The repetition range (e.g., "10-12 reps" or "30 seconds").
+        - \`description\`: A concise, clear description of how to perform the exercise safely and effectively.
+
+  Generate the workout plan now.
 `,
 });
 
