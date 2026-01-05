@@ -39,12 +39,15 @@ export function MainNav() {
           <Link href={link.href} className="flex-1">
             <SidebarMenuButton
               isActive={pathname === link.href}
-              className="w-full justify-start"
+              className="w-full justify-start relative"
               tooltip={link.label}
-              variant={pathname === link.href ? 'secondary' : 'ghost'}
+              variant={'ghost'}
             >
+              {pathname === link.href && (
+                <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 bg-secondary rounded-r-full"></span>
+              )}
               <link.icon className="h-5 w-5" />
-              <span>{link.label}</span>
+              <span className={cn(pathname === link.href && 'text-secondary-foreground')}>{link.label}</span>
             </SidebarMenuButton>
           </Link>
         </SidebarMenuItem>
