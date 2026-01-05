@@ -27,65 +27,66 @@ export function ProgressCharts() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer
-            config={{
-              weight: {
-                label: 'Weight',
-                color: 'hsl(var(--primary))',
-              },
-            }}
-            className="h-[300px] w-full"
-          >
-            <AreaChart
-              data={progressData.weight}
-              accessibilityLayer
-              margin={{
-                left: 12,
-                right: 12,
+          <div className="h-[300px] w-full">
+            <ChartContainer
+              config={{
+                weight: {
+                  label: 'Weight',
+                  color: 'hsl(var(--primary))',
+                },
               }}
             >
-              <defs>
-                <linearGradient id="colorWeight" x1="0" y1="0" x2="0" y2="1">
-                  <stop
-                    offset="5%"
-                    stopColor="var(--color-weight)"
-                    stopOpacity={0.8}
-                  />
-                  <stop
-                    offset="95%"
-                    stopColor="var(--color-weight)"
-                    stopOpacity={0}
-                  />
-                </linearGradient>
-              </defs>
-              <CartesianGrid vertical={false} />
-              <XAxis
-                dataKey="date"
-                tickLine={false}
-                axisLine={false}
-                tickMargin={8}
-                tickFormatter={(value) => value.slice(0, 3)}
-              />
-              <YAxis
-                tickLine={false}
-                axisLine={false}
-                tickMargin={8}
-                domain={['dataMin - 2', 'dataMax + 2']}
-                unit="kg"
-              />
-              <ChartTooltip
-                cursor={false}
-                content={<ChartTooltipContent indicator="dot" />}
-              />
-              <Area
-                dataKey="weight"
-                type="natural"
-                fill="url(#colorWeight)"
-                stroke="var(--color-weight)"
-                stackId="a"
-              />
-            </AreaChart>
-          </ChartContainer>
+              <AreaChart
+                data={progressData.weight}
+                accessibilityLayer
+                margin={{
+                  left: 12,
+                  right: 12,
+                }}
+              >
+                <defs>
+                  <linearGradient id="colorWeight" x1="0" y1="0" x2="0" y2="1">
+                    <stop
+                      offset="5%"
+                      stopColor="var(--color-weight)"
+                      stopOpacity={0.8}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor="var(--color-weight)"
+                      stopOpacity={0}
+                    />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid vertical={false} />
+                <XAxis
+                  dataKey="date"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  tickFormatter={(value) => value.slice(0, 3)}
+                />
+                <YAxis
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  domain={['dataMin - 2', 'dataMax + 2']}
+                  unit="kg"
+                />
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent indicator="dot" />}
+                />
+                <Area
+                  dataKey="weight"
+                  type="natural"
+                  fill="url(#colorWeight)"
+                  stroke="var(--color-weight)"
+                  stackId="a"
+                />
+              </AreaChart>
+            </ChartContainer>
+          </div>
         </CardContent>
       </Card>
       <Card>
