@@ -43,8 +43,8 @@ export function GreetingCard() {
     <Card className="relative text-white card-hover animate-fade-in-up overflow-hidden border-primary/20">
       <div 
         className="absolute inset-0 bg-cover bg-center" 
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop')" }}
-        data-ai-hint="fitness workout"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069&auto=format&fit=crop')" }}
+        data-ai-hint="bench press"
       ></div>
       <div className="absolute inset-0 bg-black/50"></div>
       <CardContent className="relative p-6 flex flex-col md:flex-row items-center justify-between gap-6">
