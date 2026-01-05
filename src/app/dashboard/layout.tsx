@@ -9,10 +9,10 @@ import { Input } from '@/components/ui/input';
 
 function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-neutral-700 bg-neutral-900 px-4 sm:px-6">
       <div className="flex items-center gap-2">
         <LogoIcon className="h-8 w-8 text-primary" />
-        <h1 className="hidden text-xl font-semibold md:block">FitZen</h1>
+        <h1 className="hidden text-xl font-semibold text-white md:block">FitZen</h1>
       </div>
       <div className="flex flex-1 items-center justify-end gap-4">
         <UserNav />
