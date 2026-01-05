@@ -59,7 +59,7 @@ export function MainNav() {
   if (!isClient) {
     // Render a placeholder or nothing on the server to avoid hydration issues
     return (
-        <nav className="flex items-center space-x-2 lg:space-x-4 overflow-x-auto pb-2 sm:pb-0">
+        <nav className="flex flex-wrap items-center space-x-2 lg:space-x-4">
             {links.map((link) => (
                 <div key={link.href} className="h-10 px-4 py-2 text-sm font-medium text-muted-foreground">
                     {link.label}
@@ -70,7 +70,7 @@ export function MainNav() {
   }
 
   return (
-    <nav ref={navRef} className="relative flex items-center space-x-2 lg:space-x-4 overflow-x-auto pb-2 sm:pb-0">
+    <nav ref={navRef} className="relative flex flex-wrap items-center space-x-2 lg:space-x-4">
       {links.map((link, index) => (
         <Button
             key={link.href}
