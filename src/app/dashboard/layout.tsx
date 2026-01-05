@@ -1,6 +1,6 @@
 'use client';
 
-import { DumbbellIcon } from '@/components/icons';
+import { LogoIcon } from '@/components/icons';
 import { MainNav } from '@/components/main-nav';
 import {
   SidebarProvider,
@@ -42,7 +42,7 @@ export default function DashboardLayout({
         <Sidebar>
           <SidebarHeader>
             <div className="flex items-center gap-2">
-              <DumbbellIcon className="h-8 w-8 text-primary" />
+              <LogoIcon className="h-8 w-8 text-primary" />
               <h1 className="text-xl font-semibold">FitZen</h1>
             </div>
           </SidebarHeader>
