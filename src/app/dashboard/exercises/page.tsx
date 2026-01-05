@@ -63,11 +63,10 @@ export default function ExercisesPage() {
                   return (
                     <Card
                       key={exercise.name}
-                      className="flex flex-col card-hover"
+                      className="flex flex-col card-hover group relative overflow-hidden"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      <CardHeader className="p-0">
-                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-lg">
+                      <div className="relative aspect-[4/3] w-full overflow-hidden">
                           {image && (
                             <Image
                               src={image.imageUrl}
@@ -77,33 +76,31 @@ export default function ExercisesPage() {
                               data-ai-hint={image.imageHint}
                             />
                           )}
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
                         </div>
-                      </CardHeader>
-                      <CardContent className="flex flex-1 flex-col justify-between p-4">
-                        <div>
-                          <CardTitle className="text-lg">
+                      
+                      <div className="relative flex flex-1 flex-col justify-between p-4 !pb-2 z-10 -mt-20">
+                       <div>
+                          <CardTitle className="text-lg text-white">
                             {exercise.name}
                           </CardTitle>
-                          <Badge variant="outline" className="mt-2">
+                           <Badge variant="secondary" className="mt-2 text-xs">
                             {exercise.difficulty}
                           </Badge>
-                          <CardDescription className="mt-2 text-sm line-clamp-3">
-                            {exercise.description}
-                          </CardDescription>
                         </div>
                         <div className="mt-4">
-                          <h4 className="text-xs font-semibold uppercase text-muted-foreground">
+                          <h4 className="text-xs font-semibold uppercase text-white/70">
                             Target Muscles
                           </h4>
                           <div className="flex flex-wrap gap-1 mt-2">
                             {exercise.targetMuscles.map((muscle) => (
-                              <Badge key={muscle} variant="secondary">
+                              <Badge key={muscle} variant="outline" className="text-white/90 border-white/30 text-xs">
                                 {muscle}
                               </Badge>
                             ))}
                           </div>
                         </div>
-                      </CardContent>
+                      </div>
                     </Card>
                   );
                 })}
