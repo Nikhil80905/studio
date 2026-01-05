@@ -7,7 +7,7 @@ export default function ProgressPage() {
         <h1 className="text-2xl font-bold tracking-tight">Progress Tracking</h1>
         <p className="text-muted-foreground">
           Visualize your journey and celebrate your achievements.
-        p>
+        </p>
       </div>
       <ProgressCharts />
     </div>
