@@ -14,16 +14,9 @@ import {
 import { UserNav } from '@/components/user-nav';
 
 function DashboardHeader() {
-  const { state } = useSidebar();
   return (
     <header
-      className={`sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border/50 bg-background/80 px-4 backdrop-blur-sm sm:justify-end transition-[width] duration-300 ease-in-out`}
-      style={{
-        width:
-          state === 'expanded'
-            ? 'calc(100% - var(--sidebar-width))'
-            : 'calc(100% - 5rem)',
-      }}
+      className={`sticky top-0 z-10 flex h-16 items-center justify-between border-b border-border/50 bg-background/80 px-4 backdrop-blur-sm sm:justify-end`}
     >
       <SidebarTrigger className="sm:hidden" />
       <UserNav />
@@ -51,7 +44,7 @@ export default function DashboardLayout({
           </SidebarContent>
           <SidebarFooter>{/* Can add footer items here */}</SidebarFooter>
         </Sidebar>
-        <div className="flex flex-1 flex-col md:ml-[var(--sidebar-width)] transition-[margin-left] duration-300 ease-in-out group-data-[state=collapsed]/sidebar-wrapper:md:ml-[5rem]">
+        <div className="flex-1 md:ml-[var(--sidebar-width)] transition-[margin-left] duration-300 ease-in-out group-data-[state=collapsed]/sidebar-wrapper:md:ml-[5rem]">
           <DashboardHeader />
           <main className="flex-1 px-6 pb-6 md:px-10 md:pb-10 pt-6">
             {children}
