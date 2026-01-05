@@ -6,7 +6,7 @@ import { TodaysWorkout } from './todays-workout';
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <GreetingCard />
       <StatsCards />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
