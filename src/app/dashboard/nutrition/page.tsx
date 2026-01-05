@@ -1,7 +1,9 @@
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { nutritionPlan } from '@/lib/data';
 import { Apple, Beef, Carrot, Drumstick } from 'lucide-react';
+import Image from 'next/image';
 
 const icons: { [key: string]: React.ReactNode } = {
   Breakfast: <Carrot className="h-6 w-6 text-primary" />,
@@ -12,12 +14,24 @@ const icons: { [key: string]: React.ReactNode } = {
 
 export default function NutritionPage() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Nutrition Planner</h1>
-        <p className="text-muted-foreground">
-          Your personalized diet plan for optimal results.
-        </p>
+    <div className="space-y-6 animate-fade-in-up">
+       <div className="relative overflow-hidden rounded-lg bg-card p-8 min-h-[250px] flex flex-col justify-center text-center">
+         <Image
+            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop"
+            alt="Healthy food"
+            fill
+            className="object-cover"
+            data-ai-hint="healthy food"
+          />
+         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/40 z-0"></div>
+        <div className="relative z-10">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground">
+            Nutrition Planner
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Your personalized diet plan for optimal results.
+          </p>
+        </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
