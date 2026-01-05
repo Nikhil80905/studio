@@ -40,8 +40,14 @@ export function GreetingCard() {
   }, []);
 
   return (
-    <Card className="bg-gradient-to-br from-primary/80 to-primary text-primary-foreground card-hover animate-fade-in-up">
-      <CardContent className="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <Card className="relative text-white card-hover animate-fade-in-up overflow-hidden border-primary/20">
+      <div 
+        className="absolute inset-0 bg-cover bg-center" 
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop')" }}
+        data-ai-hint="fitness workout"
+      ></div>
+      <div className="absolute inset-0 bg-black/50"></div>
+      <CardContent className="relative p-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex-1">
           <h1 className="text-3xl font-bold tracking-tight">
             {greeting && (
@@ -50,7 +56,7 @@ export function GreetingCard() {
           </h1>
           <div className="mt-2 h-6 overflow-hidden">
              <p className={cn(
-                "text-primary-foreground/80",
+                "text-white/80",
                 animationState === 'in' && 'animate-quote-in',
                 animationState === 'out' && 'animate-quote-out'
               )}
@@ -68,17 +74,17 @@ export function GreetingCard() {
           <div className="flex flex-col items-center gap-1 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
             <Footprints className="h-5 w-5" />
             <span className="font-bold">1,250</span>
-            <span className="text-xs text-primary-foreground/70">kcal left</span>
+            <span className="text-xs text-white/70">kcal left</span>
           </div>
           <div className="flex flex-col items-center gap-1 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
             <Droplets className="h-5 w-5" />
             <span className="font-bold">5/8</span>
-            <span className="text-xs text-primary-foreground/70">glasses</span>
+            <span className="text-xs text-white/70">glasses</span>
           </div>
            <div className="flex flex-col items-center gap-1 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
             <Zap className="h-5 w-5" />
             <span className="font-bold">Leg Day</span>
-            <span className="text-xs text-primary-foreground/70">Next Up</span>
+            <span className="text-xs text-white/70">Next Up</span>
           </div>
         </div>
       </CardContent>
