@@ -3,6 +3,26 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Dumbbell } from "lucide-react";
+
+const todaysPlan = {
+  warmup: [
+    { name: "Jumping Jacks", details: "2 minutes", imageId: "running" },
+    { name: "Dynamic Stretches", details: "3 minutes", imageId: "yoga" },
+  ],
+  mainSet: [
+    { name: "Squats", details: "3 sets of 12 reps", imageId: "squat" },
+    { name: "Push-ups", details: "3 sets of 10 reps", imageId: "push-up" },
+    { name: "Pull-ups/Rows", details: "3 sets of 8 reps", imageId: "pull-up" },
+    { name: "Plank", details: "3 sets, 45s hold", imageId: "plank" },
+  ],
+  cooldown: [
+      { name: "Stretching", details: "5 minutes", imageId: "yoga" },
+  ]
+};
+
 
 export function TodaysWorkout() {
   return (
@@ -14,30 +34,86 @@ export function TodaysWorkout() {
         <CardTitle>Today's Workout</CardTitle>
         <CardDescription>Your personalized plan for today.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <h3 className="font-semibold">Warm-up (5 mins)</h3>
-          <ul className="list-disc list-inside text-sm text-muted-foreground">
-            <li>Jumping Jacks - 2 minutes</li>
-            <li>Dynamic Stretches - 3 minutes</li>
-          </ul>
+      <CardContent className="space-y-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Warm-up (5 mins)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {todaysPlan.warmup.map((exercise) => {
+              const image = PlaceHolderImages.find(img => img.id === exercise.imageId);
+              return (
+                <div key={exercise.name} className="flex items-center gap-3 bg-accent/50 p-2 rounded-lg">
+                  <div className="relative h-14 w-14 rounded-md overflow-hidden flex-shrink-0">
+                    {image ? (
+                        <Image src={image.imageUrl} alt={exercise.name} fill className="object-cover" data-ai-hint={image.imageHint} />
+                    ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-primary/10">
+                            <Dumbbell className="h-6 w-6 text-primary" />
+                        </div>
+                    )}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">{exercise.name}</p>
+                    <p className="text-xs text-muted-foreground">{exercise.details}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="space-y-2">
-          <h3 className="font-semibold">Main Set (35 mins)</h3>
-          <ul className="list-disc list-inside text-sm text-muted-foreground">
-            <li>Squats: 3 sets of 12 reps</li>
-            <li>Push-ups: 3 sets of 10 reps</li>
-            <li>Pull-ups/Rows: 3 sets of 8 reps</li>
-            <li>Plank: 3 sets, 45-second hold</li>
-          </ul>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Main Set (35 mins)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {todaysPlan.mainSet.map((exercise) => {
+              const image = PlaceHolderImages.find(img => img.id === exercise.imageId);
+              return (
+                <div key={exercise.name} className="flex items-center gap-3 bg-accent/50 p-2 rounded-lg">
+                   <div className="relative h-14 w-14 rounded-md overflow-hidden flex-shrink-0">
+                    {image ? (
+                        <Image src={image.imageUrl} alt={exercise.name} fill className="object-cover" data-ai-hint={image.imageHint} />
+                    ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-primary/10">
+                            <Dumbbell className="h-6 w-6 text-primary" />
+                        </div>
+                    )}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">{exercise.name}</p>
+                    <p className="text-xs text-muted-foreground">{exercise.details}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="space-y-2">
-          <h3 className="font-semibold">Cool-down (5 mins)</h3>
-          <ul className="list-disc list-inside text-sm text-muted-foreground">
-            <li>Stretching - 5 minutes</li>
-          </ul>
+        
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Cool-down (5 mins)</h3>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {todaysPlan.cooldown.map((exercise) => {
+              const image = PlaceHolderImages.find(img => img.id === exercise.imageId);
+              return (
+                <div key={exercise.name} className="flex items-center gap-3 bg-accent/50 p-2 rounded-lg">
+                  <div className="relative h-14 w-14 rounded-md overflow-hidden flex-shrink-0">
+                    {image ? (
+                        <Image src={image.imageUrl} alt={exercise.name} fill className="object-cover" data-ai-hint={image.imageHint} />
+                    ) : (
+                        <div className="flex h-full w-full items-center justify-center bg-primary/10">
+                            <Dumbbell className="h-6 w-6 text-primary" />
+                        </div>
+                    )}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">{exercise.name}</p>
+                    <p className="text-xs text-muted-foreground">{exercise.details}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <Button asChild className="w-full">
+
+        <Button asChild className="w-full !mt-8">
           <Link href="/dashboard/workouts">Start Workout</Link>
         </Button>
       </CardContent>
