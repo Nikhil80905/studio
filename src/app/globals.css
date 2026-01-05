@@ -4,32 +4,32 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 0 0% 100%;
+    --foreground: 224 71% 4%;
 
-    --card: 220 40% 8%;
-    --card-foreground: 213 31% 91%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
 
     --primary: 210 90% 50%;
     --primary-foreground: 210 20% 98%;
 
-    --secondary: 150 80% 50%;
+    --secondary: 150 80% 40%;
     --secondary-foreground: 210 20% 98%;
 
-    --muted: 215 28% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 215 28% 90%;
+    --muted-foreground: 215 20% 45%;
 
-    --accent: 215 28% 17%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 215 28% 95%;
+    --accent-foreground: 224 71% 4%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 28% 17%;
-    --input: 215 28% 17%;
+    --border: 215 28% 87%;
+    --input: 215 28% 87%;
     --ring: 210 90% 50%;
 
     --chart-1: 210 90% 50%;
@@ -96,8 +96,8 @@
     @apply transition-all duration-300 ease-in-out;
   }
   .card-hover:hover {
-    @apply transform -translate-y-1 shadow-lg shadow-primary/20;
-    --tw-shadow-color: hsl(var(--primary) / 0.2);
+    @apply transform -translate-y-1 shadow-lg shadow-primary/10;
+    --tw-shadow-color: hsl(var(--primary) / 0.1);
     box-shadow: 0 0 15px 2px var(--tw-shadow-color), 0 4px 6px -1px var(--tw-shadow-color);
   }
 }
@@ -116,5 +116,18 @@
 
   .animate-fade-in-up {
     animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
   }
 }
