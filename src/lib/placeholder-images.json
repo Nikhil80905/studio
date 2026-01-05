@@ -3,67 +3,67 @@
     {
       "id": "bench-press",
       "description": "Person doing bench press exercise.",
-      "imageUrl": "https://images.unsplash.com/photo-1534368270820-9de3d8053204?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxiZW5jaCUyMHByZXNzfGVufDB8fHx8MTc2NzYwMTQ0NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1574680096145-f844349f4b6f?w=800&q=80",
       "imageHint": "bench press"
     },
     {
       "id": "push-up",
       "description": "Person doing a push-up.",
-      "imageUrl": "https://images.unsplash.com/photo-1682048682610-20a91f10b29c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwdXNoJTIwdXB8ZW58MHx8fHwxNzY3NjA4NTQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1599421498111-ad70be4900a3?w=800&q=80",
       "imageHint": "push up"
     },
     {
       "id": "pull-up",
       "description": "Person doing a pull-up.",
-      "imageUrl": "https://images.unsplash.com/photo-1597452494947-f2986526d1be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwdWxsJTIwdXB8ZW58MHx8fHwxNzY3NjAxNDQ0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1632757266938-f9644a3e2e77?w=800&q=80",
       "imageHint": "pull up"
     },
     {
       "id": "deadlift",
       "description": "Person performing a deadlift.",
-      "imageUrl": "https://images.unsplash.com/photo-1575507440599-d990adbe4b9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGVhZGxpZnQlMjB3ZWlnaHRsaWZ0aW5nfGVufDB8fHx8MTc2NzU4OTA1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584862991102-6d40c5b3c582?w=800&q=80",
       "imageHint": "deadlift weightlifting"
     },
     {
       "id": "squat",
       "description": "Person performing a squat.",
-      "imageUrl": "https://images.unsplash.com/photo-1534368420009-621bfab424a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3F1YXQlMjBmaXRuZXNzfGVufDB8fHx8MTc2NzYwODU0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=800&q=80",
       "imageHint": "squat fitness"
     },
     {
       "id": "lunges",
       "description": "Person doing lunges.",
-      "imageUrl": "https://images.unsplash.com/photo-1590556409527-40916236bdd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdW5nZSUyMGV4ZXJjaXNlfGVufDB8fHx8MTc2NzYzMjI2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1616803689943-5601631c7fec?w=800&q=80",
       "imageHint": "lunge exercise"
     },
     {
       "id": "bicep-curl",
       "description": "Person doing a bicep curl.",
-      "imageUrl": "https://images.unsplash.com/photo-1759300642292-ffe3cb347548?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxiaWNlcCUyMGN1cmx8ZW58MHx8fHwxNzY3NjE3MjQzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1620188526517-521921285554?w=800&q=80",
       "imageHint": "bicep curl"
     },
     {
       "id": "plank",
       "description": "Person holding a plank position.",
-      "imageUrl": "https://images.unsplash.com/photo-1758599878868-52cced2f8154?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwbGFuayUyMGNvcmV8ZW58MHx8fHwxNzY3NTg5MDU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1544216717-3bbf52512659?w=800&q=80",
       "imageHint": "plank core"
     },
     {
       "id": "running",
       "description": "Person running outdoors.",
-      "imageUrl": "https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxydW5uaW5nJTIwbWFyYXRob258ZW58MHx8fHwxNzY3NTQ4MTgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80",
       "imageHint": "running marathon"
     },
     {
       "id": "yoga",
       "description": "Person in a yoga pose.",
-      "imageUrl": "https://images.unsplash.com/photo-1667890785988-8da12fd0989b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8eW9nYSUyMHBvc2V8ZW58MHx8fHwxNzY3NjMxODgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
       "imageHint": "yoga pose"
     },
     {
       "id": "user-avatar",
       "description": "Placeholder for user avatar.",
-      "imageUrl": "https://images.unsplash.com/photo-1644224010199-407a662c9228?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwb3J0cmFpdCUyMHBlcnNvbnxlbnwwfHx8fDE3Njc2MDg4ODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=800&q=80",
       "imageHint": "portrait person"
     }
   ]

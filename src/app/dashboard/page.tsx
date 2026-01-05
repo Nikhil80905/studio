@@ -14,7 +14,7 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col gap-8 animate-fade-in-up">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+        <Card className="card-hover">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Today's Goal
@@ -28,7 +28,7 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               Calories Burned
@@ -42,7 +42,7 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Workouts Done</CardTitle>
             <Dumbbell className="h-4 w-4 text-muted-foreground" />
@@ -54,7 +54,7 @@ export default function DashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Current Weight</CardTitle>
             <Weight className="h-4 w-4 text-muted-foreground" />
@@ -71,7 +71,7 @@ export default function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
         <WeeklyActivityChart />
 
-        <Card className="col-span-4 lg:col-span-3">
+        <Card className="col-span-4 lg:col-span-3 card-hover">
           <CardHeader>
             <CardTitle>Today's Workout</CardTitle>
             <CardDescription>Your personalized plan for today.</CardDescription>

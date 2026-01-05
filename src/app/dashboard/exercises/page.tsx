@@ -33,7 +33,7 @@ export default function ExercisesPage() {
                 .map((exercise) => {
                   const image = PlaceHolderImages.find((img) => img.id === exercise.imageId);
                   return (
-                    <Card key={exercise.name} className="flex flex-col">
+                    <Card key={exercise.name} className="flex flex-col card-hover">
                       <CardHeader>
                         <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg">
                           {image && (
