@@ -16,7 +16,7 @@ const quotes = [
 export function GreetingCard() {
   const [greeting, setGreeting] = useState('');
   const [quoteIndex, setQuoteIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  const [animationState, setAnimationState] = useState('in');
 
   useEffect(() => {
     const hours = new Date().getHours();
@@ -29,11 +29,11 @@ export function GreetingCard() {
     }
 
     const quoteInterval = setInterval(() => {
-      setIsFading(true);
+      setAnimationState('out');
       setTimeout(() => {
         setQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-        setIsFading(false);
-      }, 500); // Half a second for fade out
+        setAnimationState('in');
+      }, 700); // This should match the animation duration
     }, 5000); // Change quote every 5 seconds
 
     return () => clearInterval(quoteInterval);
@@ -48,12 +48,21 @@ export function GreetingCard() {
               <span className="inline-block animate-fade-in">{greeting}, Nikhil 👋</span>
             )}
           </h1>
-          <p className={cn(
-              "mt-2 text-primary-foreground/80 transition-opacity duration-500",
-              isFading ? 'opacity-0' : 'opacity-100'
-            )}>
-            "{quotes[quoteIndex]}"
-          </p>
+          <div className="mt-2 h-6 overflow-hidden">
+             <p className={cn(
+                "text-primary-foreground/80",
+                animationState === 'in' && 'animate-quote-in',
+                animationState === 'out' && 'animate-quote-out'
+              )}
+              onAnimationEnd={() => {
+                if(animationState === 'out') {
+                  // Element is hidden, ready for next quote
+                }
+              }}
+            >
+              "{quotes[quoteIndex]}"
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-4 text-sm w-full md:w-auto">
           <div className="flex flex-col items-center gap-1 p-3 rounded-lg bg-white/10 backdrop-blur-sm">

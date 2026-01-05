@@ -130,4 +130,34 @@
   .animate-fade-in {
     animation: fade-in 0.5s ease-out forwards;
   }
+
+  @keyframes quote-slide-up-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes quote-slide-down-out {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-quote-in {
+    animation: quote-slide-up-in 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  .animate-quote-out {
+    animation: quote-slide-down-out 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  }
 }
