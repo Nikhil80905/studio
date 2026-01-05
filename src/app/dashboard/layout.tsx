@@ -7,7 +7,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarTrigger,
-  SidebarInset,
 } from '@/components/ui/sidebar';
 import { UserNav } from '@/components/user-nav';
 
@@ -29,11 +28,9 @@ export default function DashboardLayout({
           <SidebarContent>
             <MainNav />
           </SidebarContent>
-          <SidebarFooter>
-            {/* Can add footer items here */}
-          </SidebarFooter>
+          <SidebarFooter>{/* Can add footer items here */}</SidebarFooter>
         </Sidebar>
-        <div className="md:ml-[--sidebar-width] transition-[margin-left] duration-300 ease-in-out">
+        <div className="flex flex-col md:ml-[--sidebar-width] transition-[margin-left] duration-300 ease-in-out">
           <header className="flex h-14 items-center justify-between border-b border-border/50 bg-background/80 px-4 backdrop-blur-sm sm:justify-end">
             <SidebarTrigger className="sm:hidden" />
             <UserNav />
