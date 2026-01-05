@@ -35,7 +35,7 @@ export default function DashboardLayout({
             <SidebarTrigger className="sm:hidden" />
             <UserNav />
           </header>
-          <main className="flex-1 p-6 md:p-10">{children}</main>
+          <main className="flex-1 px-6 md:px-10 py-6 md:py-10">{children}</main>
         </div>
       </div>
     </SidebarProvider>
