@@ -9,7 +9,7 @@ export default function CalculatorsPage() {
           Essential tools to understand your body and help you plan your fitness goals.
         </p>
       </div>
-      <div className="max-w-3xl mx-auto">
+      <div>
         <CalculatorForms />
       </div>
     </div>
