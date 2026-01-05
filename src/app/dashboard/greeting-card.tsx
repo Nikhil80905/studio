@@ -2,11 +2,21 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Droplets, Footprints, Zap } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const quotes = [
+  "The only bad workout is the one that didn't happen.",
+  "Your body can stand almost anything. It's your mind you have to convince.",
+  "Success isn't greatness. It's consistency. Consistent hard work gains success.",
+  "Train insane or remain the same.",
+  "The pain you feel today will be the strength you feel tomorrow."
+];
 
 export function GreetingCard() {
   const [greeting, setGreeting] = useState('');
+  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
     const hours = new Date().getHours();
@@ -17,6 +27,16 @@ export function GreetingCard() {
     } else {
       setGreeting('Good Evening');
     }
+
+    const quoteInterval = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+        setIsFading(false);
+      }, 500); // Half a second for fade out
+    }, 5000); // Change quote every 5 seconds
+
+    return () => clearInterval(quoteInterval);
   }, []);
 
   return (
@@ -28,8 +48,11 @@ export function GreetingCard() {
               <span className="inline-block animate-fade-in">{greeting}, Nikhil 👋</span>
             )}
           </h1>
-          <p className="mt-2 text-primary-foreground/80">
-            Today's Focus: <span className="font-semibold">Strength Training</span>. Let's make it count.
+          <p className={cn(
+              "mt-2 text-primary-foreground/80 transition-opacity duration-500",
+              isFading ? 'opacity-0' : 'opacity-100'
+            )}>
+            "{quotes[quoteIndex]}"
           </p>
         </div>
         <div className="flex items-center gap-4 text-sm w-full md:w-auto">
