@@ -6,6 +6,7 @@ import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Notifications } from '@/components/notifications';
 
 function DashboardHeader() {
   return (
@@ -14,7 +15,8 @@ function DashboardHeader() {
         <LogoIcon className="h-8 w-8 text-primary" />
         <h1 className="hidden text-xl font-semibold text-white md:block">FitZen</h1>
       </div>
-      <div className="flex flex-1 items-center justify-end gap-4">
+      <div className="flex flex-1 items-center justify-end gap-2">
+        <Notifications />
         <UserNav />
       </div>
     </header>
