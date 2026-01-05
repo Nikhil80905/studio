@@ -36,11 +36,12 @@ export function MainNav() {
     <SidebarMenu>
       {links.map((link) => (
         <SidebarMenuItem key={link.href}>
-          <Link href={link.href}>
+          <Link href={link.href} className="flex-1">
             <SidebarMenuButton
               isActive={pathname === link.href}
-              className="w-full"
+              className="w-full justify-start"
               tooltip={link.label}
+              variant={pathname === link.href ? 'secondary' : 'ghost'}
             >
               <link.icon className="h-5 w-5" />
               <span>{link.label}</span>
