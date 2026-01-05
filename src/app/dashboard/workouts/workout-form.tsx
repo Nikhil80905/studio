@@ -105,7 +105,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="goal"
                 render={({ field }) => (
-                  <FormItem className="animate-fade-in" style={{animationDelay: '100ms'}}>
+                  <FormItem className="animate-fade-in-up" style={{animationDelay: '100ms'}}>
                     <FormLabel>Fitness Goal</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
@@ -128,7 +128,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="equipment"
                 render={({ field }) => (
-                  <FormItem className="animate-fade-in" style={{animationDelay: '200ms'}}>
+                  <FormItem className="animate-fade-in-up" style={{animationDelay: '200ms'}}>
                     <FormLabel>Available Equipment</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
@@ -151,7 +151,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="activityLevel"
                 render={({ field }) => (
-                  <FormItem className="animate-fade-in" style={{animationDelay: '300ms'}}>
+                  <FormItem className="animate-fade-in-up" style={{animationDelay: '300ms'}}>
                     <FormLabel>Activity Level</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
@@ -174,7 +174,7 @@ export function WorkoutForm() {
                 control={form.control}
                 name="duration"
                 render={({ field }) => (
-                  <FormItem className="animate-fade-in" style={{animationDelay: '400ms'}}>
+                  <FormItem className="animate-fade-in-up" style={{animationDelay: '400ms'}}>
                     <FormLabel>Workout Duration: {field.value} minutes</FormLabel>
                     <FormControl>
                       <Slider
@@ -191,7 +191,7 @@ export function WorkoutForm() {
                 )}
               />
 
-              <Button type="submit" disabled={isLoading} className="w-full !mt-8 animate-fade-in" style={{animationDelay: '500ms'}}>
+              <Button type="submit" disabled={isLoading} className="w-full !mt-8 animate-fade-in-up" style={{animationDelay: '500ms'}}>
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Generate Plan
               </Button>
@@ -205,7 +205,7 @@ export function WorkoutForm() {
           <div className="flex h-full min-h-[400px] w-full items-center justify-center rounded-lg border border-dashed bg-card/50">
             <div className="flex flex-col items-center gap-2 text-muted-foreground animate-fade-in">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
-              <p className="font-semibold">Generating your personalized plan...</p>
+              <p className="font-semibold animate-pulse">Generating your personalized plan...</p>
               <p className="text-sm">Our AI is crafting the perfect workout for you.</p>
             </div>
           </div>
@@ -264,7 +264,7 @@ export function WorkoutForm() {
         {!generatedPlan && !isLoading && (
            <div className="flex h-full min-h-[400px] w-full items-center justify-center rounded-lg border-2 border-dashed border-muted/30 bg-card/50">
             <div className="text-center text-muted-foreground animate-fade-in">
-              <Dumbbell className="mx-auto h-12 w-12 text-muted-foreground/50 mb-4" />
+              <Dumbbell className="mx-auto h-12 w-12 text-muted-foreground/50 mb-4 animate-bounce" />
               <h3 className="text-lg font-semibold">Your New Plan Awaits</h3>
               <p className="text-sm">Fill out the form to get started.</p>
             </div>
