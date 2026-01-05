@@ -217,7 +217,7 @@ export function WorkoutForm() {
               <h2 className="text-2xl font-bold tracking-tight text-primary">{generatedPlan.title}</h2>
               <p className="text-muted-foreground">{generatedPlan.description}</p>
             </div>
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {generatedPlan.exercises.map((exercise, index) => {
                  const image = PlaceHolderImages.find(
                     (img) => img.id === exercise.imageId
@@ -225,17 +225,17 @@ export function WorkoutForm() {
                 return (
                 <Card 
                   key={index}
-                  className="card-hover overflow-hidden animate-fade-in-up"
+                  className="card-hover overflow-hidden animate-fade-in-up group"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <CardContent className="p-0 flex items-center gap-4">
-                     <div className="relative aspect-square w-24 h-24 flex-shrink-0">
+                  <CardContent className="p-0">
+                    <div className="relative aspect-[4/3] w-full">
                       {image ? (
                         <Image
                           src={image.imageUrl}
                           alt={exercise.name}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
                           data-ai-hint={image.imageHint}
                         />
                       ) : (
@@ -244,15 +244,12 @@ export function WorkoutForm() {
                         </div>
                       )}
                     </div>
-                    <div className="flex-1 py-4">
+                    <div className="p-4">
                       <h3 className="font-bold text-card-foreground">{exercise.name}</h3>
                       <p className="text-sm text-muted-foreground">
                         {exercise.sets} &bull; {exercise.reps}
                       </p>
                     </div>
-                    <Button variant="ghost" size="icon" className="mr-4">
-                        <Check className="h-5 w-5 text-green-500" />
-                    </Button>
                   </CardContent>
                 </Card>
               )})}
