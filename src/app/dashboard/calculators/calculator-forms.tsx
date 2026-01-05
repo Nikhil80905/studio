@@ -14,11 +14,11 @@ function AnimatedResult({ title, value, unit }: { title: string, value: string, 
   return (
     <div
       key={value}
-      className="rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 p-4 text-center w-full animate-fade-in-up"
+      className="rounded-lg bg-primary/10 backdrop-blur-sm border border-primary/20 p-4 text-center w-full animate-fade-in-up"
     >
-      <p className="text-sm text-accent-foreground/80">{title}</p>
-      <p className="text-3xl font-bold text-white">
-        {value} {unit && <span className="text-base font-medium text-accent-foreground/80">{unit}</span>}
+      <p className="text-sm text-foreground/80">{title}</p>
+      <p className="text-3xl font-bold text-foreground">
+        {value} {unit && <span className="text-base font-medium text-foreground/80">{unit}</span>}
       </p>
     </div>
   );
@@ -75,21 +75,23 @@ export function CalculatorForms() {
   };
 
   return (
-    <Card className="bg-card/80 backdrop-blur-sm border-white/10">
+    <Card className="bg-card/80 backdrop-blur-sm border-border/20">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3 bg-muted/50">
-          <TabsTrigger value="bmi">BMI</TabsTrigger>
-          <TabsTrigger value="bmr">BMR</TabsTrigger>
-          <TabsTrigger value="calories">Calories</TabsTrigger>
-        </TabsList>
+        <div className="p-4 border-b border-border/20">
+          <TabsList className="grid w-full grid-cols-3 bg-muted/50">
+            <TabsTrigger value="bmi">BMI</TabsTrigger>
+            <TabsTrigger value="bmr">BMR</TabsTrigger>
+            <TabsTrigger value="calories">Calories</TabsTrigger>
+          </TabsList>
+        </div>
         
-        <TabsContent value="bmi" className="animate-fade-in">
+        <TabsContent value="bmi" className="animate-fade-in p-6">
           <form onSubmit={calculateBmi}>
-            <CardHeader>
+            <CardHeader className="p-0 mb-6">
               <CardTitle>BMI Calculator</CardTitle>
               <CardDescription>Calculate your Body Mass Index.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="p-0 space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="bmi-height">Height (cm)</Label>
                 <Input id="bmi-height" name="height" type="number" placeholder="e.g., 175" required />
@@ -99,20 +101,20 @@ export function CalculatorForms() {
                 <Input id="bmi-weight" name="weight" type="number" placeholder="e.g., 70" required />
               </div>
             </CardContent>
-            <CardFooter className="flex-col items-start gap-4">
+            <CardFooter className="flex-col items-start gap-4 p-0 mt-6">
               <Button type="submit" className="w-full">Calculate BMI</Button>
               {bmiResult && <AnimatedResult title="Your BMI is" value={bmiResult} />}
             </CardFooter>
           </form>
         </TabsContent>
 
-        <TabsContent value="bmr" className="animate-fade-in">
+        <TabsContent value="bmr" className="animate-fade-in p-6">
           <form onSubmit={calculateBmr}>
-            <CardHeader>
+            <CardHeader className="p-0 mb-6">
               <CardTitle>BMR Calculator</CardTitle>
               <CardDescription>Calculate your Basal Metabolic Rate.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="p-0 space-y-4">
               <div className="space-y-2">
                 <Label>Gender</Label>
                 <RadioGroup name="gender" defaultValue="male" className="flex gap-4 pt-2">
@@ -136,23 +138,23 @@ export function CalculatorForms() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="bmr-weight">Weight (kg)</Label>
-                <Input id="bmr-weight" name="weight" type="number" placeholder="e.g., 70" required />
+                <Input id="bmr-weight" name="weight" type="number" placeholder="eg., 70" required />
               </div>
             </CardContent>
-            <CardFooter className="flex-col items-start gap-4">
+            <CardFooter className="flex-col items-start gap-4 p-0 mt-6">
               <Button type="submit" className="w-full">Calculate BMR</Button>
               {bmrResult && <AnimatedResult title="Your BMR is" value={bmrResult} unit="kcal/day" />}
             </CardFooter>
           </form>
         </TabsContent>
 
-        <TabsContent value="calories" className="animate-fade-in">
+        <TabsContent value="calories" className="animate-fade-in p-6">
           <form onSubmit={calculateCalories}>
-            <CardHeader>
+            <CardHeader className="p-0 mb-6">
               <CardTitle>Daily Calorie Needs</CardTitle>
               <CardDescription>Estimate your daily maintenance calories.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="p-0 space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="calorie-bmr">BMR (kcal)</Label>
                 <Input id="calorie-bmr" name="bmr" type="number" placeholder="Calculate BMR first" defaultValue={bmrResult || ''} required />
@@ -173,7 +175,7 @@ export function CalculatorForms() {
                 </Select>
               </div>
             </CardContent>
-            <CardFooter className="flex-col items-start gap-4">
+            <CardFooter className="flex-col items-start gap-4 p-0 mt-6">
               <Button type="submit" className="w-full">Calculate Calories</Button>
               {calorieResult && <AnimatedResult title="Maintenance Calories:" value={calorieResult} unit="kcal/day" />}
             </CardFooter>
