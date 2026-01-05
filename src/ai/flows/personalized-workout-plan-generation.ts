@@ -46,8 +46,17 @@ const WorkoutPlanInputSchema = z.object({
 });
 export type WorkoutPlanInput = z.infer<typeof WorkoutPlanInputSchema>;
 
+const ExerciseSchema = z.object({
+  name: z.string().describe("The name of the exercise."),
+  sets: z.string().describe("The number of sets to perform, as a string (e.g., '3 sets')."),
+  reps: z.string().describe("The number of repetitions per set, as a string (e.g., '10-12 reps')."),
+  description: z.string().describe("A brief description of how to perform the exercise.").optional(),
+});
+
 const WorkoutPlanOutputSchema = z.object({
-  plan: z.string().describe('The generated workout plan.'),
+  title: z.string().describe("A catchy title for the generated workout plan."),
+  description: z.string().describe("A brief, encouraging description of the workout plan."),
+  exercises: z.array(ExerciseSchema).describe("An array of exercises for the workout plan."),
 });
 export type WorkoutPlanOutput = z.infer<typeof WorkoutPlanOutputSchema>;
 
@@ -73,8 +82,10 @@ const workoutPlanPrompt = ai.definePrompt({
   Age: {{{age}}} years
   Gender: {{{gender}}}
 
-  Create a workout plan that is tailored to this user and their needs, formatted as a numbered list.
+  Create a structured workout plan that is tailored to this user and their needs.
   Consider the users height, weight, age, gender, and goals, when providing the workout plan, such that it is safe for them.
+  The output must be a JSON object that conforms to the output schema.
+  The plan should include a title, a short description, and a list of exercises with their name, sets, reps, and a brief description.
 `,
 });
 
