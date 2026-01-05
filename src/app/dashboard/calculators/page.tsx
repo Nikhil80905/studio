@@ -2,14 +2,16 @@ import { CalculatorForms } from "./calculator-forms";
 
 export default function CalculatorsPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in-up">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Fitness Calculators</h1>
-        <p className="text-muted-foreground">
-          Essential tools to understand your body and plan your goals.
+        <h1 className="text-3xl font-bold tracking-tight">Fitness Calculators</h1>
+        <p className="text-muted-foreground mt-2">
+          Essential tools to understand your body and help you plan your fitness goals.
         </p>
       </div>
-      <CalculatorForms />
+      <div className="max-w-3xl mx-auto">
+        <CalculatorForms />
+      </div>
     </div>
   );
 }
