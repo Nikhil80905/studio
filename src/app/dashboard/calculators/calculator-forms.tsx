@@ -62,7 +62,7 @@ export function CalculatorForms() {
     }
   };
 
-  const calculateCalories = (e: React-FormEvent<HTMLFormElement>) => {
+  const calculateCalories = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const bmr = parseFloat(bmrResult || formData.get('bmr') as string);
