@@ -23,6 +23,30 @@ const todaysPlan = {
   ]
 };
 
+function ExerciseItem({ exercise, index }: { exercise: { name: string; details: string; imageId: string; }, index: number }) {
+  const image = PlaceHolderImages.find(img => img.id === exercise.imageId);
+  return (
+    <div 
+      className="flex items-center gap-3 bg-accent/50 p-2 rounded-lg transition-transform duration-300 hover:scale-105 hover:bg-accent"
+      style={{ animation: `fade-in-up 0.5s ${index * 0.1}s ease-out forwards`, opacity: 0 }}
+    >
+      <div className="relative h-14 w-14 rounded-md overflow-hidden flex-shrink-0">
+        {image ? (
+            <Image src={image.imageUrl} alt={exercise.name} fill className="object-cover" data-ai-hint={image.imageHint} />
+        ) : (
+            <div className="flex h-full w-full items-center justify-center bg-primary/10">
+                <Dumbbell className="h-6 w-6 text-primary" />
+            </div>
+        )}
+      </div>
+      <div>
+        <p className="font-semibold text-sm">{exercise.name}</p>
+        <p className="text-xs text-muted-foreground">{exercise.details}</p>
+      </div>
+    </div>
+  );
+}
+
 
 export function TodaysWorkout() {
   return (
@@ -38,78 +62,27 @@ export function TodaysWorkout() {
         <div>
           <h3 className="text-lg font-semibold mb-3">Warm-up (5 mins)</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {todaysPlan.warmup.map((exercise) => {
-              const image = PlaceHolderImages.find(img => img.id === exercise.imageId);
-              return (
-                <div key={exercise.name} className="flex items-center gap-3 bg-accent/50 p-2 rounded-lg">
-                  <div className="relative h-14 w-14 rounded-md overflow-hidden flex-shrink-0">
-                    {image ? (
-                        <Image src={image.imageUrl} alt={exercise.name} fill className="object-cover" data-ai-hint={image.imageHint} />
-                    ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-primary/10">
-                            <Dumbbell className="h-6 w-6 text-primary" />
-                        </div>
-                    )}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm">{exercise.name}</p>
-                    <p className="text-xs text-muted-foreground">{exercise.details}</p>
-                  </div>
-                </div>
-              );
-            })}
+            {todaysPlan.warmup.map((exercise, index) => (
+              <ExerciseItem key={exercise.name} exercise={exercise} index={index} />
+            ))}
           </div>
         </div>
 
         <div>
           <h3 className="text-lg font-semibold mb-3">Main Set (35 mins)</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {todaysPlan.mainSet.map((exercise) => {
-              const image = PlaceHolderImages.find(img => img.id === exercise.imageId);
-              return (
-                <div key={exercise.name} className="flex items-center gap-3 bg-accent/50 p-2 rounded-lg">
-                   <div className="relative h-14 w-14 rounded-md overflow-hidden flex-shrink-0">
-                    {image ? (
-                        <Image src={image.imageUrl} alt={exercise.name} fill className="object-cover" data-ai-hint={image.imageHint} />
-                    ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-primary/10">
-                            <Dumbbell className="h-6 w-6 text-primary" />
-                        </div>
-                    )}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm">{exercise.name}</p>
-                    <p className="text-xs text-muted-foreground">{exercise.details}</p>
-                  </div>
-                </div>
-              );
-            })}
+            {todaysPlan.mainSet.map((exercise, index) => (
+               <ExerciseItem key={exercise.name} exercise={exercise} index={index + todaysPlan.warmup.length} />
+            ))}
           </div>
         </div>
         
         <div>
           <h3 className="text-lg font-semibold mb-3">Cool-down (5 mins)</h3>
            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {todaysPlan.cooldown.map((exercise) => {
-              const image = PlaceHolderImages.find(img => img.id === exercise.imageId);
-              return (
-                <div key={exercise.name} className="flex items-center gap-3 bg-accent/50 p-2 rounded-lg">
-                  <div className="relative h-14 w-14 rounded-md overflow-hidden flex-shrink-0">
-                    {image ? (
-                        <Image src={image.imageUrl} alt={exercise.name} fill className="object-cover" data-ai-hint={image.imageHint} />
-                    ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-primary/10">
-                            <Dumbbell className="h-6 w-6 text-primary" />
-                        </div>
-                    )}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm">{exercise.name}</p>
-                    <p className="text-xs text-muted-foreground">{exercise.details}</p>
-                  </div>
-                </div>
-              );
-            })}
+            {todaysPlan.cooldown.map((exercise, index) => (
+               <ExerciseItem key={exercise.name} exercise={exercise} index={index + todaysPlan.warmup.length + todaysPlan.mainSet.length} />
+            ))}
           </div>
         </div>
 
