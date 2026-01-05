@@ -1,7 +1,11 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
 import { progressData } from '@/lib/data';
 import {
   Area,
@@ -18,36 +22,73 @@ export function ProgressCharts() {
       <Card>
         <CardHeader>
           <CardTitle>Weight Tracking</CardTitle>
-          <CardDescription>Your weight progress over the last few weeks.</CardDescription>
+          <CardDescription>
+            Your weight progress over the last few weeks.
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
-            <AreaChart data={progressData.weight}>
+          <ChartContainer
+            config={{
+              weight: {
+                label: 'Weight',
+                color: 'hsl(var(--primary))',
+              },
+            }}
+            className="h-[300px] w-full"
+          >
+            <AreaChart
+              data={progressData.weight}
+              accessibilityLayer
+              margin={{
+                left: 12,
+                right: 12,
+              }}
+            >
               <defs>
                 <linearGradient id="colorWeight" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                  <stop
+                    offset="5%"
+                    stopColor="var(--color-weight)"
+                    stopOpacity={0.8}
+                  />
+                  <stop
+                    offset="95%"
+                    stopColor="var(--color-weight)"
+                    stopOpacity={0}
+                  />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="date" stroke="hsl(var(--muted-foreground))" fontSize={12} />
-              <YAxis domain={['dataMin - 1', 'dataMax + 1']} stroke="hsl(var(--muted-foreground))" fontSize={12} unit="kg" />
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="date"
+                tickLine={false}
+                axisLine={false}
+                tickMargin={8}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <YAxis
+                tickLine={false}
+                axisLine={false}
+                tickMargin={8}
+                domain={['dataMin - 2', 'dataMax + 2']}
+                unit="kg"
+              />
               <ChartTooltip
-                cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 1, strokeDasharray: '3 3' }}
+                cursor={false}
                 content={<ChartTooltipContent indicator="dot" />}
               />
               <Area
-                type="monotone"
                 dataKey="weight"
-                stroke="hsl(var(--primary))"
+                type="natural"
                 fill="url(#colorWeight)"
-                strokeWidth={2}
+                stroke="var(--color-weight)"
+                stackId="a"
               />
             </AreaChart>
-          </ResponsiveContainer>
+          </ChartContainer>
         </CardContent>
       </Card>
-       <Card>
+      <Card>
         <CardHeader>
           <CardTitle>Body Measurements</CardTitle>
           <CardDescription>Your body measurement changes.</CardDescription>
@@ -55,15 +96,23 @@ export function ProgressCharts() {
         <CardContent className="grid gap-4 md:grid-cols-3">
           {progressData.measurements.map((measurement, index) => (
             <div key={index} className="rounded-lg border bg-card p-4">
-              <h3 className="font-semibold text-muted-foreground">{measurement.date}</h3>
+              <h3 className="font-semibold text-muted-foreground">
+                {measurement.date}
+              </h3>
               <div className="mt-2 space-y-1 text-sm">
-                <p><strong>Chest:</strong> {measurement.chest} cm</p>
-                <p><strong>Waist:</strong> {measurement.waist} cm</p>
-                <p><strong>Hips:</strong> {measurement.hips} cm</p>
+                <p>
+                  <strong>Chest:</strong> {measurement.chest} cm
+                </p>
+                <p>
+                  <strong>Waist:</strong> {measurement.waist} cm
+                </p>
+                <p>
+                  <strong>Hips:</strong> {measurement.hips} cm
+                </p>
               </div>
             </div>
           ))}
-          <div className="rounded-lg border border-dashed border-muted-foreground/50 flex items-center justify-center p-4">
+          <div className="flex items-center justify-center rounded-lg border border-dashed border-muted-foreground/50 p-4">
             <p className="text-sm text-muted-foreground">+ Add New Entry</p>
           </div>
         </CardContent>
