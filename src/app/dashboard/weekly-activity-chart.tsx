@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, XAxis, YAxis } from 'recharts';
 import { activityData } from '@/lib/data';
 import {
   ChartContainer,
@@ -32,7 +32,7 @@ export function WeeklyActivityChart() {
           }}
           className="h-[350px] w-full"
         >
-          <BarChart data={activityData} accessibilityLayer>
+          <BarChart data={activityData} accessibilityLayer margin={{ top: 20, right: 20, bottom: 0, left: -10 }}>
             <XAxis
               dataKey="day"
               stroke="hsl(var(--muted-foreground))"
@@ -45,7 +45,8 @@ export function WeeklyActivityChart() {
               fontSize={12}
               tickLine={false}
               axisLine={false}
-              tickFormatter={(value) => `${value} kcal`}
+              tickFormatter={(value) => `${value}`}
+              label={{ value: 'kcal', position: 'top', offset: 10, fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
             />
             <ChartTooltip
               content={<ChartTooltipContent hideLabel />}
