@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Check, Loader2, Dumbbell } from 'lucide-react';
+import Image from 'next/image';
 
 import { getWorkoutPlanAction } from '@/app/actions';
 import { type WorkoutPlanOutput } from '@/ai/flows/personalized-workout-plan-generation';
@@ -28,7 +29,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { useToast } from '@/hooks/use-toast';
-import { cn } from '@/lib/utils';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const formSchema = z.object({
   goal: z.string().min(1, 'Please select a goal.'),
@@ -217,28 +218,44 @@ export function WorkoutForm() {
               <p className="text-muted-foreground">{generatedPlan.description}</p>
             </div>
             <div className="space-y-4">
-              {generatedPlan.exercises.map((exercise, index) => (
+              {generatedPlan.exercises.map((exercise, index) => {
+                 const image = PlaceHolderImages.find(
+                    (img) => img.id === exercise.imageId
+                  );
+                return (
                 <Card 
                   key={index}
                   className="card-hover overflow-hidden"
                   style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards', opacity: 0 }}
                 >
-                  <CardContent className="p-4 flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                      <Dumbbell className="h-6 w-6 text-primary" />
+                  <CardContent className="p-0 flex items-center gap-4">
+                     <div className="relative aspect-square w-24 h-24 flex-shrink-0">
+                      {image ? (
+                        <Image
+                          src={image.imageUrl}
+                          alt={exercise.name}
+                          fill
+                          className="object-cover"
+                          data-ai-hint={image.imageHint}
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center rounded-lg bg-primary/10">
+                          <Dumbbell className="h-8 w-8 text-primary" />
+                        </div>
+                      )}
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 py-4">
                       <h3 className="font-bold text-card-foreground">{exercise.name}</h3>
                       <p className="text-sm text-muted-foreground">
                         {exercise.sets} &bull; {exercise.reps}
                       </p>
                     </div>
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" size="icon" className="mr-4">
                         <Check className="h-5 w-5 text-green-500" />
                     </Button>
                   </CardContent>
                 </Card>
-              ))}
+              )})}
             </div>
             <Button className="w-full">Start Workout</Button>
           </div>

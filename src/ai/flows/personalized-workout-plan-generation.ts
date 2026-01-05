@@ -51,6 +51,7 @@ const ExerciseSchema = z.object({
   sets: z.string().describe("The number of sets to perform, as a string (e.g., '3 sets')."),
   reps: z.string().describe("The number of repetitions per set, as a string (e.g., '10-12 reps')."),
   description: z.string().describe("A brief description of how to perform the exercise.").optional(),
+  imageId: z.string().describe("The ID of the image for the exercise. MUST be one of the provided IDs."),
 });
 
 const WorkoutPlanOutputSchema = z.object({
@@ -72,6 +73,18 @@ const workoutPlanPrompt = ai.definePrompt({
 
   The output MUST be a valid JSON object that strictly conforms to the provided output schema. Do not add any extra commentary or text outside of the JSON structure.
 
+  Available Exercises and their image IDs:
+  - Bench Press: 'bench-press'
+  - Push-up: 'push-up'
+  - Pull-up: 'pull-up'
+  - Deadlift: 'deadlift'
+  - Squat: 'squat'
+  - Lunges: 'lunges'
+  - Bicep Curl: 'bicep-curl'
+  - Plank: 'plank'
+  - Running: 'running'
+  - Downward-Facing Dog: 'yoga'
+
   User Details:
   - Fitness Goal: {{{goal}}}
   - Available Equipment: {{{equipment}}}
@@ -92,6 +105,7 @@ const workoutPlanPrompt = ai.definePrompt({
         - \`sets\`: The number of sets (e.g., "3 sets").
         - \`reps\`: The repetition range (e.g., "10-12 reps" or "30 seconds").
         - \`description\`: A concise, clear description of how to perform the exercise safely and effectively.
+        - \`imageId\`: The corresponding image ID from the list of available exercises. This MUST be one of the provided IDs.
 
   Generate the workout plan now.
 `,
