@@ -107,6 +107,12 @@
       "description": "Image representing fats.",
       "imageUrl": "https://images.unsplash.com/photo-1615485925332-f4a6ad5a1839?q=80&w=1974&auto=format&fit=crop",
       "imageHint": "avocado toast"
+    },
+    {
+      "id": "ai-insights-bg",
+      "description": "Abstract image for AI insights card.",
+      "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "team meeting"
     }
   ]
 }
