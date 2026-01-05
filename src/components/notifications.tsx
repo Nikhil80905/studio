@@ -41,7 +41,7 @@ export function Notifications() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80 p-0" align="end">
-        <Card className="border-0">
+        <Card className="border-0 bg-card">
           <CardHeader className='pb-4'>
             <CardTitle className='text-lg'>Notifications</CardTitle>
             <CardDescription>You have 3 unread messages.</CardDescription>
