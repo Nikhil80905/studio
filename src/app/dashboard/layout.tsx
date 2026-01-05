@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { LogoIcon } from '@/components/icons';
 import { MainNav } from '@/components/main-nav';
 import {
@@ -26,6 +27,16 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; 
+  }
+  
   return (
     <SidebarProvider>
       <div className="relative min-h-screen md:flex">
