@@ -21,12 +21,17 @@ const categories = [
 export default function ExercisesPage() {
   return (
     <div className="space-y-8 animate-fade-in-up">
-      <div className="relative overflow-hidden rounded-lg bg-card p-8 min-h-[250px] flex flex-col justify-center">
-         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/30 z-0"></div>
-         <div className="absolute top-0 left-0 w-64 h-64 bg-primary/20 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl z-0"></div>
-         <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full translate-x-1/2 translate-y-1/2 blur-2xl z-0"></div>
-        <div className="relative z-10 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-card-foreground">
+      <div className="relative overflow-hidden rounded-lg bg-card p-8 min-h-[250px] flex flex-col justify-center text-center">
+         <Image
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop"
+            alt="Exercise Library"
+            fill
+            className="object-cover"
+            data-ai-hint="fitness workout"
+          />
+         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/40 z-0"></div>
+        <div className="relative z-10">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground">
             Exercise Library
           </h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
