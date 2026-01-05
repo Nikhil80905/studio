@@ -24,7 +24,9 @@ function DashboardHeader() {
 function NavigationBar() {
   return (
     <div className="sticky top-16 z-30 flex h-14 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
-      <MainNav />
+      <div className="flex-1">
+        <MainNav />
+      </div>
       <div className="relative w-full max-w-sm">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
