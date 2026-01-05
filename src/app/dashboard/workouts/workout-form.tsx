@@ -169,7 +169,7 @@ export function WorkoutForm() {
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Select your experience level" />
-                        </Trigger>
+                        </SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="beginner">Beginner</SelectItem>
