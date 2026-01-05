@@ -6,11 +6,11 @@ import { Droplets, Footprints, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const quotes = [
-  "The only bad workout is the one that didn't happen.",
-  "Your body can stand almost anything. It's your mind you have to convince.",
-  "Success isn't greatness. It's consistency. Consistent hard work gains success.",
+  "Strive for progress, not perfection.",
+  "The body achieves what the mind believes.",
+  "Sweat is just fat crying.",
   "Train insane or remain the same.",
-  "The pain you feel today will be the strength you feel tomorrow."
+  "Be stronger than your excuses."
 ];
 
 export function GreetingCard() {
