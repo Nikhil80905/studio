@@ -65,6 +65,24 @@
       "description": "Placeholder for user avatar.",
       "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
       "imageHint": "portrait person"
+    },
+    {
+      "id": "streak-bg",
+      "description": "Abstract image for workout streak card.",
+      "imageUrl": "https://images.unsplash.com/photo-1581009137052-c40971b43eff?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "fitness gym"
+    },
+    {
+      "id": "consistency-bg",
+      "description": "Image representing consistency.",
+      "imageUrl": "https://images.unsplash.com/photo-1554344728-77cf90d922a2?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "running track"
+    },
+    {
+      "id": "recovery-bg",
+      "description": "Image representing recovery or rest.",
+      "imageUrl": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "gym weights"
     }
   ]
 }
