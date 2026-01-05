@@ -11,6 +11,7 @@ import {
   Settings,
   BookOpen,
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 import {
@@ -31,6 +32,15 @@ const links = [
 
 export function MainNav() {
   const pathname = usePathname();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; 
+  }
 
   return (
     <SidebarMenu>
