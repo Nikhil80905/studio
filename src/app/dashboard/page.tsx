@@ -6,15 +6,15 @@ import { TodaysWorkout } from './todays-workout';
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4">
       <GreetingCard />
-      <StatsCards />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2">
           <WeeklyActivityChart />
         </div>
         <AiInsights />
       </div>
+      <StatsCards />
       <TodaysWorkout />
     </div>
   );
