@@ -40,7 +40,18 @@ export function MainNav() {
   useEffect(() => {
     if (!isClient || !navRef.current) return;
 
-    const activeLinkIndex = links.findIndex(link => pathname === link.href);
+    let activeLinkIndex = links.findIndex(link => pathname === link.href);
+
+    // If no exact match, check for partial match for parent routes
+    if (activeLinkIndex === -1) {
+      activeLinkIndex = links.findIndex(link => pathname.startsWith(link.href) && link.href !== '/dashboard/home');
+    }
+     // Fallback to home if still no match and on a dashboard page
+    if (activeLinkIndex === -1 && pathname.startsWith('/dashboard')) {
+        activeLinkIndex = 0;
+    }
+
+
     const activeLink = activeLinkIndex > -1 ? linkRefs.current[activeLinkIndex] : null;
 
     if (activeLink) {
@@ -51,18 +62,7 @@ export function MainNav() {
             opacity: 1
         });
     } else {
-        const homeLinkIndex = links.findIndex(link => pathname.startsWith(link.href));
-        const homeLink = homeLinkIndex > -1 ? linkRefs.current[homeLinkIndex] : null;
-        if(homeLink) {
-            const { offsetLeft, offsetWidth } = homeLink;
-            setIndicatorStyle({
-                left: `${offsetLeft}px`,
-                width: `${offsetWidth}px`,
-                opacity: 1
-            });
-        } else {
-            setIndicatorStyle({ opacity: 0 });
-        }
+      setIndicatorStyle({ opacity: 0, width: 0 });
     }
   }, [pathname, isClient]);
 
@@ -89,7 +89,9 @@ export function MainNav() {
             variant="ghost"
             className={cn(
                 "text-sm font-medium transition-colors hover:text-primary relative z-10",
-                pathname === link.href ? "text-primary" : "text-muted-foreground"
+                 (pathname === link.href || (pathname.startsWith(link.href) && link.href !== '/dashboard/home') || (link.href === '/dashboard/home' && pathname === '/dashboard/home'))
+                  ? "text-primary"
+                  : "text-muted-foreground"
             )}
         >
           <Link 
@@ -101,7 +103,7 @@ export function MainNav() {
         </Button>
       ))}
       <div 
-        className="absolute -bottom-1 h-0.5 bg-primary rounded-full transition-all duration-300 ease-in-out"
+        className="absolute -bottom-1 h-0.5 bg-primary rounded-full transition-all duration-500 ease-in-out"
         style={indicatorStyle}
       ></div>
     </nav>
