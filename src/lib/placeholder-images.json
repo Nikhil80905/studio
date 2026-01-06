@@ -125,6 +125,18 @@
       "description": "Portrait of Elizabeth Ward.",
       "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop",
       "imageHint": "woman portrait"
+    },
+    {
+      "id": "nourish-hero",
+      "description": "Person holding a healthy salad.",
+      "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "healthy salad"
+    },
+    {
+      "id": "fad-diets",
+      "description": "Woman relaxing and reading a book.",
+      "imageUrl": "https://images.unsplash.com/photo-1529336977161-0453303a4c52?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "woman reading"
     }
   ]
 }

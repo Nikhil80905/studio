@@ -6,6 +6,7 @@ import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import { Notifications } from '@/components/notifications';
 import { SearchInput } from '@/components/search-input';
+import { redirect, usePathname } from 'next/navigation';
 
 function DashboardHeader() {
   return (
@@ -39,11 +40,16 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [isClient, setIsClient] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  if (pathname === '/dashboard' || pathname === '/dashboard/') {
+    redirect('/dashboard/home');
+  }
+  
   if (!isClient) {
     return null;
   }

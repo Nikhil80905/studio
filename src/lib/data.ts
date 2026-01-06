@@ -136,3 +136,11 @@ export const blogPosts = [
       imageId: 'elizabeth-ward',
     },
   ];
+
+export const dietPlans = [
+    {
+        title: "Don't Fall for Fad Diets",
+        description: "Get the real facts about fad diets, and learn some healthy weight loss strategies that you can use for life.",
+        imageId: "fad-diets"
+    }
+]

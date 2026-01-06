@@ -10,6 +10,7 @@ import {
   LayoutDashboard,
   Settings,
   BookOpen,
+  Home,
 } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 
@@ -17,6 +18,7 @@ import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 
 const links = [
+  { href: '/dashboard/home', label: 'Home', icon: Home },
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/dashboard/workouts', label: 'Workouts', icon: Dumbbell },
   { href: '/dashboard/exercises', label: 'Exercises', icon: BookOpen },
@@ -40,7 +42,7 @@ export function MainNav() {
   useEffect(() => {
     if (!isClient || !navRef.current) return;
 
-    const activeLinkIndex = links.findIndex(link => pathname === link.href);
+    const activeLinkIndex = links.findIndex(link => pathname.startsWith(link.href) && (link.href !== '/dashboard' || pathname === '/dashboard'));
     const activeLink = activeLinkIndex > -1 ? linkRefs.current[activeLinkIndex] : null;
 
     if (activeLink) {
@@ -78,7 +80,7 @@ export function MainNav() {
             variant="ghost"
             className={cn(
                 "text-sm font-medium transition-colors hover:text-primary relative z-10",
-                pathname === link.href ? "text-primary" : "text-muted-foreground"
+                (pathname.startsWith(link.href) && (link.href !== '/dashboard' || pathname === '/dashboard')) ? "text-primary" : "text-muted-foreground"
             )}
         >
           <Link 
