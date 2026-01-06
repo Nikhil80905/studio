@@ -1,10 +1,10 @@
-import { GreetingCard } from './greeting-card';
-import { StatsCards } from './stats-cards';
-import { AiInsights } from './ai-insights';
-import { WeeklyActivityChart } from './weekly-activity-chart';
-import { TodaysWorkout } from './todays-workout';
+import { GreetingCard } from '../greeting-card';
+import { StatsCards } from '../stats-cards';
+import { AiInsights } from '../ai-insights';
+import { WeeklyActivityChart } from '../weekly-activity-chart';
+import { TodaysWorkout } from '../todays-workout';
 
-export default function DashboardPage() {
+export default function DashboardOverviewPage() {
   return (
     <div className="flex flex-col gap-4">
       <GreetingCard />

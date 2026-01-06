@@ -19,7 +19,7 @@ import { Button } from './ui/button';
 
 const links = [
   { href: '/dashboard/home', label: 'Home', icon: Home },
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard/overview', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/dashboard/workouts', label: 'Workouts', icon: Dumbbell },
   { href: '/dashboard/exercises', label: 'Exercises', icon: BookOpen },
   { href: '/dashboard/nutrition', label: 'Nutrition', icon: HeartPulse },
@@ -42,7 +42,7 @@ export function MainNav() {
   useEffect(() => {
     if (!isClient || !navRef.current) return;
 
-    const activeLinkIndex = links.findIndex(link => pathname.startsWith(link.href) && (link.href !== '/dashboard' || pathname === '/dashboard'));
+    const activeLinkIndex = links.findIndex(link => pathname === link.href);
     const activeLink = activeLinkIndex > -1 ? linkRefs.current[activeLinkIndex] : null;
 
     if (activeLink) {
@@ -53,7 +53,18 @@ export function MainNav() {
             opacity: 1
         });
     } else {
-        setIndicatorStyle({ opacity: 0 });
+        const homeLinkIndex = links.findIndex(link => pathname.startsWith(link.href));
+        const homeLink = homeLinkIndex > -1 ? linkRefs.current[homeLinkIndex] : null;
+        if(homeLink) {
+            const { offsetLeft, offsetWidth } = homeLink;
+            setIndicatorStyle({
+                left: `${offsetLeft}px`,
+                width: `${offsetWidth}px`,
+                opacity: 1
+            });
+        } else {
+            setIndicatorStyle({ opacity: 0 });
+        }
     }
   }, [pathname, isClient]);
 
@@ -80,7 +91,7 @@ export function MainNav() {
             variant="ghost"
             className={cn(
                 "text-sm font-medium transition-colors hover:text-primary relative z-10",
-                (pathname.startsWith(link.href) && (link.href !== '/dashboard' || pathname === '/dashboard')) ? "text-primary" : "text-muted-foreground"
+                pathname === link.href ? "text-primary" : "text-muted-foreground"
             )}
         >
           <Link 
