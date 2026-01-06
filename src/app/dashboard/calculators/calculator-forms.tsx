@@ -24,9 +24,14 @@ function AnimatedResult({ title, value, unit }: { title: string, value: string, 
   );
 }
 
+type BmiStatus = {
+  message: string;
+  color: string;
+};
 
 export function CalculatorForms() {
   const [bmiResult, setBmiResult] = useState<string | null>(null);
+  const [bmiStatus, setBmiStatus] = useState<BmiStatus | null>(null);
   const [bmrResult, setBmrResult] = useState<string | null>(null);
   const [calorieResult, setCalorieResult] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('bmi');
@@ -40,6 +45,19 @@ export function CalculatorForms() {
       const heightInMeters = height / 100;
       const bmi = weight / (heightInMeters * heightInMeters);
       setBmiResult(bmi.toFixed(2));
+
+      if (bmi < 18.5) {
+        setBmiStatus({ message: 'Underweight', color: 'text-yellow-400' });
+      } else if (bmi >= 18.5 && bmi < 25) {
+        setBmiStatus({ message: 'Healthy Weight', color: 'text-green-400' });
+      } else if (bmi >= 25 && bmi < 30) {
+        setBmiStatus({ message: 'Overweight', color: 'text-yellow-400' });
+      } else {
+        setBmiStatus({ message: 'Obese', color: 'text-red-400' });
+      }
+    } else {
+      setBmiResult(null);
+      setBmiStatus(null);
     }
   };
 
@@ -103,7 +121,18 @@ export function CalculatorForms() {
             </CardContent>
             <CardFooter className="flex-col items-start gap-4 p-0 mt-6">
               <Button type="submit" className="w-full">Calculate BMI</Button>
-              {bmiResult && <AnimatedResult title="Your BMI is" value={bmiResult} />}
+              {bmiResult && (
+                <div className="w-full space-y-2">
+                  <AnimatedResult title="Your BMI is" value={bmiResult} />
+                  {bmiStatus && (
+                    <div className="rounded-lg bg-muted/50 p-3 text-center animate-fade-in-up">
+                      <p className={cn("font-semibold", bmiStatus.color)}>
+                        {bmiStatus.message}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
             </CardFooter>
           </form>
         </TabsContent>
