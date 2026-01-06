@@ -10,6 +10,7 @@ import {
   LayoutDashboard,
   Settings,
   BookOpen,
+  MessageSquare,
 } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 
@@ -24,6 +25,7 @@ const links = [
   { href: '/dashboard/progress', label: 'Progress', icon: BarChart3 },
   { href: '/dashboard/calculators', label: 'Calculators', icon: Calculator },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
+  { href: '/dashboard/feedback', label: 'Feedback', icon: MessageSquare },
 ];
 
 export function MainNav() {
