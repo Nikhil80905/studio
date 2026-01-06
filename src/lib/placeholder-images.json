@@ -3,7 +3,7 @@
     {
       "id": "bench-press",
       "description": "Person doing bench press exercise.",
-      "imageUrl": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069&auto=format&fit=crop",
+      "imageUrl": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "bench press"
     },
     {
@@ -113,6 +113,18 @@
       "description": "Abstract image for AI insights card.",
       "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "team meeting"
+    },
+    {
+      "id": "sally-kuzemchak",
+      "description": "Portrait of Sally Kuzemchak.",
+      "imageUrl": "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "elizabeth-ward",
+      "description": "Portrait of Elizabeth Ward.",
+      "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop",
+      "imageHint": "woman portrait"
     }
   ]
 }

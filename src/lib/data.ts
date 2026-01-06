@@ -121,3 +121,18 @@ export const activityData = [
   { day: 'Sat', calories: 239 },
   { day: 'Sun', calories: 349 },
 ];
+
+export const blogPosts = [
+    {
+      author: 'Sally Kuzemchak, RD, MS',
+      title: 'What Your Stool Is Trying To Tell You',
+      description: 'Registered dietitian',
+      imageId: 'sally-kuzemchak',
+    },
+    {
+      author: 'Elizabeth Ward',
+      title: 'What Happens to Your Gut with Age',
+      description: 'Registered dietitian nutritionist',
+      imageId: 'elizabeth-ward',
+    },
+  ];
