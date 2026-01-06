@@ -23,7 +23,7 @@ export default function SettingsPage() {
     <div className="space-y-6 animate-fade-in-up">
       <div className="relative overflow-hidden rounded-lg bg-card p-8 min-h-[250px] flex flex-col justify-center text-center">
         <Image
-          src="https://images.unsplash.com/photo-1590487988256-5ed24a3e3535?q=80&w=2070&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=2070&auto=format&fit=crop"
           alt="Settings"
           fill
           className="object-cover"
