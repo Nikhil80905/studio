@@ -10,7 +10,6 @@ import {
   LayoutDashboard,
   Settings,
   BookOpen,
-  MessageSquare,
 } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 
@@ -25,7 +24,6 @@ const links = [
   { href: '/dashboard/progress', label: 'Progress', icon: BarChart3 },
   { href: '/dashboard/calculators', label: 'Calculators', icon: Calculator },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
-  { href: '/dashboard/feedback', label: 'Feedback', icon: MessageSquare },
 ];
 
 export function MainNav() {
@@ -61,7 +59,7 @@ export function MainNav() {
   if (!isClient) {
     // Render a placeholder or nothing on the server to avoid hydration issues
     return (
-        <nav className="flex items-center justify-center space-x-2 lg:space-x-4">
+        <nav className="relative flex items-center justify-center space-x-2 lg:space-x-4">
             {links.map((link) => (
                 <div key={link.href} className="h-10 px-4 py-2 text-sm font-medium text-muted-foreground">
                     {link.label}
