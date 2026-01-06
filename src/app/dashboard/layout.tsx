@@ -1,12 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { LogoIcon } from '@/components/icons';
 import { MainNav } from '@/components/main-nav';
 import { UserNav } from '@/components/user-nav';
 import { Notifications } from '@/components/notifications';
 import { SearchInput } from '@/components/search-input';
 import { redirect, usePathname } from 'next/navigation';
+import { Settings } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 function DashboardHeader() {
   return (
@@ -16,6 +19,11 @@ function DashboardHeader() {
         <h1 className="hidden text-xl font-semibold text-white md:block">FitZen</h1>
       </div>
       <div className="flex flex-1 items-center justify-end gap-2">
+        <Link href="/dashboard/settings">
+           <Button size="icon" className="relative rounded-full">
+              <Settings className="h-5 w-5" />
+           </Button>
+        </Link>
         <Notifications />
         <UserNav />
       </div>

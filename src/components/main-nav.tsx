@@ -8,7 +8,6 @@ import {
   Dumbbell,
   HeartPulse,
   LayoutDashboard,
-  Settings,
   BookOpen,
   Home,
 } from 'lucide-react';
@@ -25,7 +24,6 @@ const links = [
   { href: '/dashboard/nutrition', label: 'Nutrition', icon: HeartPulse },
   { href: '/dashboard/progress', label: 'Progress', icon: BarChart3 },
   { href: '/dashboard/calculators', label: 'Calculators', icon: Calculator },
-  { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
 
 export function MainNav() {
