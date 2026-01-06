@@ -137,6 +137,24 @@
       "description": "Woman relaxing and reading a book.",
       "imageUrl": "https://images.unsplash.com/photo-1529336977161-0453303a4c52?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "woman reading"
+    },
+    {
+      "id": "mediterranean-diet",
+      "description": "A table full of healthy mediterranean food.",
+      "imageUrl": "https://images.unsplash.com/photo-1540420773420-2850a86b2b5f?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "mediterranean food"
+    },
+    {
+      "id": "intermittent-fasting",
+      "description": "A clock on a plate.",
+      "imageUrl": "https://images.unsplash.com/photo-1579986337229-9c5fb425883d?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "clock plate"
+    },
+    {
+      "id": "plant-based",
+      "description": "A vibrant bowl of plant-based food.",
+      "imageUrl": "https://images.unsplash.com/photo-1490645935967-10de6ba1a033?q=80&w=2052&auto=format&fit=crop",
+      "imageHint": "buddha bowl"
     }
   ]
 }

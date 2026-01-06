@@ -3,7 +3,6 @@ import { StatsCards } from './stats-cards';
 import { AiInsights } from './ai-insights';
 import { WeeklyActivityChart } from './weekly-activity-chart';
 import { TodaysWorkout } from './todays-workout';
-import { LatestBlogPosts } from './latest-blog-posts';
 
 export default function DashboardPage() {
   return (
@@ -17,7 +16,6 @@ export default function DashboardPage() {
       </div>
       <StatsCards />
       <TodaysWorkout />
-      <LatestBlogPosts />
     </div>
   );
 }

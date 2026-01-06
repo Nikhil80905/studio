@@ -142,5 +142,20 @@ export const dietPlans = [
         title: "Don't Fall for Fad Diets",
         description: "Get the real facts about fad diets, and learn some healthy weight loss strategies that you can use for life.",
         imageId: "fad-diets"
+    },
+    {
+        title: "The Mediterranean Diet",
+        description: "Discover the heart-healthy benefits of a diet rich in fresh vegetables, fruits, whole grains, and healthy fats.",
+        imageId: "mediterranean-diet"
+    },
+    {
+        title: "Intermittent Fasting 101",
+        description: "Learn about the different methods of intermittent fasting and how it can impact weight loss and metabolic health.",
+        imageId: "intermittent-fasting"
+    },
+    {
+        title: "Plant-Based Power",
+        description: "Explore the advantages of a plant-based diet, from improved energy levels to a lower environmental footprint.",
+        imageId: "plant-based"
     }
 ]

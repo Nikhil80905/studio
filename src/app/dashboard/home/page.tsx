@@ -6,6 +6,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ForkKnife } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { LatestBlogPosts } from '../latest-blog-posts';
 
 export default function HomePage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'nourish-hero');
@@ -56,41 +57,46 @@ export default function HomePage() {
         <Button variant="link" className="text-muted-foreground hover:text-primary">Healthy Food Choices</Button>
       </div>
 
-      <div>
-        <div className="mb-4 flex items-baseline justify-between">
-            <div>
-                <p className="text-sm font-semibold text-primary">1 OF 5 / POPULAR DIET PLANS</p>
-            </div>
-          <Button variant="link" asChild>
-            <Link href="#">View All</Link>
-          </Button>
-        </div>
-        <div className="grid gap-6 md:grid-cols-1">
-          {dietPlans.slice(0, 1).map((plan) => {
-            const image = PlaceHolderImages.find((img) => img.id === plan.imageId);
-            return (
-                <Card key={plan.title} className="card-hover grid md:grid-cols-2 overflow-hidden">
-                    <div className="relative aspect-[4/3] md:aspect-auto w-full h-full">
-                        {image && (
-                            <Image 
-                                src={image.imageUrl}
-                                alt={plan.title}
-                                fill
-                                className="object-cover"
-                                data-ai-hint={image.imageHint}
-                            />
-                        )}
-                    </div>
-                    <div className="p-6 flex flex-col justify-center">
-                        <h3 className="text-2xl font-bold">{plan.title}</h3>
-                        <p className="mt-2 text-muted-foreground">{plan.description}</p>
+      <div className="space-y-8">
+        <div>
+          <div className="mb-4 flex items-baseline justify-between">
+              <div>
+                  <h2 className="text-2xl font-bold tracking-tight">Popular Diet Plans</h2>
+                  <p className="text-muted-foreground">Explore diet plans recommended by our experts.</p>
+              </div>
+            <Button variant="link" asChild>
+              <Link href="#">View All</Link>
+            </Button>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {dietPlans.map((plan) => {
+              const image = PlaceHolderImages.find((img) => img.id === plan.imageId);
+              return (
+                  <Card key={plan.title} className="card-hover grid md:grid-cols-2 overflow-hidden">
+                      <div className="relative aspect-[4/3] md:aspect-auto w-full h-full">
+                          {image && (
+                              <Image 
+                                  src={image.imageUrl}
+                                  alt={plan.title}
+                                  fill
+                                  className="object-cover"
+                                  data-ai-hint={image.imageHint}
+                              />
+                          )}
+                      </div>
+                      <div className="p-6 flex flex-col justify-center">
+                          <h3 className="text-xl font-bold">{plan.title}</h3>
+                          <p className="mt-2 text-muted-foreground text-sm">{plan.description}</p>
 
-                        <Button variant="link" className="p-0 h-auto mt-4 self-start">Read More</Button>
-                    </div>
-                </Card>
-            )
-          })}
+                          <Button variant="link" className="p-0 h-auto mt-4 self-start">Read More</Button>
+                      </div>
+                  </Card>
+              )
+            })}
+          </div>
         </div>
+
+        <LatestBlogPosts />
       </div>
     </div>
   );
