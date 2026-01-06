@@ -13,7 +13,7 @@ export function SearchInput() {
 
   useEffect(() => {
     if (isHovered && inputRef.current) {
-        inputRef.current.focus();
+      inputRef.current.focus();
     }
   }, [isHovered]);
 
@@ -36,8 +36,10 @@ export function SearchInput() {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         className={cn(
-          'w-10 h-10 rounded-full cursor-pointer transition-all duration-300 ease-in-out pl-10 focus:cursor-text focus:w-64 focus:bg-card/80 focus:border-primary/50',
-           showInput ? 'w-64 bg-card/80 border-primary/20' : 'bg-transparent border-transparent'
+          'h-10 rounded-full cursor-pointer transition-all duration-300 ease-in-out pl-10 focus:cursor-text focus:w-64 focus:bg-card/80 focus:border-primary/50',
+          showInput
+            ? 'w-64 bg-card/80 border-primary/20'
+            : 'w-10 bg-transparent border-transparent'
         )}
       />
     </div>
