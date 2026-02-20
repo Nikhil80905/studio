@@ -117,7 +117,7 @@ export default function ExercisesPage() {
                                 View Demo
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="sm:max-w-[600px]">
+                            <DialogContent className="sm:max-w-[600px] overflow-hidden">
                               <DialogHeader>
                                 <DialogTitle className="flex items-center gap-2">
                                   <Info className="h-5 w-5 text-primary" />
@@ -128,7 +128,7 @@ export default function ExercisesPage() {
                                 </DialogDescription>
                               </DialogHeader>
                               <div className="grid gap-4 py-4">
-                                <div className="relative aspect-video rounded-lg overflow-hidden border bg-black">
+                                <div className="relative aspect-video rounded-lg overflow-hidden border bg-black shadow-inner">
                                    <video 
                                       controls 
                                       className="w-full h-full object-cover"
@@ -136,6 +136,7 @@ export default function ExercisesPage() {
                                       autoPlay
                                       muted
                                       loop
+                                      playsInline
                                     >
                                       <source src="https://assets.mixkit.co/videos/preview/mixkit-man-working-out-with-dumbbells-at-the-gym-2342-large.mp4" type="video/mp4" />
                                       Your browser does not support the video tag.
