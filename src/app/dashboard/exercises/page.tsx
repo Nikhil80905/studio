@@ -27,6 +27,19 @@ const categories = [
 
 type Exercise = typeof exercises[0];
 
+// Map categories to specific demo videos for variety
+const videoMap: Record<string, string> = {
+  'Chest': 'https://assets.mixkit.co/videos/preview/mixkit-man-working-out-with-dumbbells-at-the-gym-2342-large.mp4',
+  'Back': 'https://assets.mixkit.co/videos/preview/mixkit-man-doing-pull-ups-in-a-gym-2343-large.mp4',
+  'Legs': 'https://assets.mixkit.co/videos/preview/mixkit-man-doing-squats-with-a-barbell-2345-large.mp4',
+  'Shoulders': 'https://assets.mixkit.co/videos/preview/mixkit-athletic-man-lifting-dumbbells-in-the-gym-2346-large.mp4',
+  'Arms': 'https://assets.mixkit.co/videos/preview/mixkit-man-doing-biceps-curls-with-dumbbells-2344-large.mp4',
+  'Abs': 'https://assets.mixkit.co/videos/preview/mixkit-man-doing-crunches-on-the-floor-2347-large.mp4',
+  'Cardio': 'https://assets.mixkit.co/videos/preview/mixkit-man-running-on-the-street-4457-large.mp4',
+  'Yoga': 'https://assets.mixkit.co/videos/preview/mixkit-woman-doing-yoga-on-a-mat-at-home-42407-large.mp4',
+  'default': 'https://assets.mixkit.co/videos/preview/mixkit-man-working-out-with-dumbbells-at-the-gym-2342-large.mp4'
+};
+
 export default function ExercisesPage() {
   const [mounted, setMounted] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
@@ -36,6 +49,10 @@ export default function ExercisesPage() {
   }, []);
 
   if (!mounted) return null;
+
+  const getVideoSrc = (category: string) => {
+    return videoMap[category] || videoMap['default'];
+  };
 
   return (
     <div className="space-y-8 animate-fade-in-up">
@@ -162,7 +179,7 @@ export default function ExercisesPage() {
                 playsInline
                 poster={PlaceHolderImages.find(img => img.id === selectedExercise.imageId)?.imageUrl}
               >
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-man-working-out-with-dumbbells-at-the-gym-2342-large.mp4" type="video/mp4" />
+                <source src={getVideoSrc(selectedExercise.category)} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <div className="absolute top-0 left-0 w-full p-8 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none">
