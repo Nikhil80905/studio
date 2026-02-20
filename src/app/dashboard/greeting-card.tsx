@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Droplets, Footprints, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const quotes = [
   "Strive for progress, not perfection.",
@@ -33,58 +34,60 @@ export function GreetingCard() {
       setTimeout(() => {
         setQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
         setAnimationState('in');
-      }, 700); // This should match the animation duration
-    }, 5000); // Change quote every 5 seconds
+      }, 700);
+    }, 5000);
 
     return () => clearInterval(quoteInterval);
   }, []);
 
   return (
-    <Card className="relative text-white card-hover animate-fade-in-up overflow-hidden border-primary/20">
-      <div 
-        className="absolute inset-0 bg-cover bg-center" 
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069&auto=format&fit=crop')" }}
-        data-ai-hint="bench press"
-      ></div>
-      <div className="absolute inset-0 bg-black/50"></div>
-      <CardContent className="relative p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex-1">
-          <h1 className="text-3xl font-bold tracking-tight">
+    <Card className="relative text-white card-hover animate-fade-in-up overflow-hidden border-none rounded-2xl min-h-[220px] flex flex-col justify-center">
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=2069&auto=format&fit=crop"
+          alt="Gym Motivation"
+          fill
+          className="object-cover"
+          data-ai-hint="bench press"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
+      </div>
+      
+      <CardContent className="relative z-10 p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex-1 space-y-4">
+          <h1 className="text-4xl font-black tracking-tight drop-shadow-lg">
             {greeting && (
               <span className="inline-block animate-fade-in">{greeting}, Nikhil 👋</span>
             )}
           </h1>
-          <div className="mt-2 h-6 overflow-hidden">
+          <div className="h-8 overflow-hidden">
              <p className={cn(
-                "text-white/80",
+                "text-white/90 text-lg font-medium italic drop-shadow-md",
                 animationState === 'in' && 'animate-quote-in',
                 animationState === 'out' && 'animate-quote-out'
               )}
-              onAnimationEnd={() => {
-                if(animationState === 'out') {
-                  // Element is hidden, ready for next quote
-                }
-              }}
             >
               "{quotes[quoteIndex]}"
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-4 text-sm w-full md:w-auto">
-          <div className="flex flex-col items-center gap-1 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
-            <Footprints className="h-5 w-5" />
-            <span className="font-bold">1,250</span>
-            <span className="text-xs text-white/70">kcal left</span>
+        
+        <div className="grid grid-cols-3 gap-4 w-full md:w-auto">
+          <div className="flex flex-col items-center justify-center gap-1 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors cursor-default">
+            <Footprints className="h-6 w-6 text-primary" />
+            <span className="text-xl font-black">1,250</span>
+            <span className="text-[10px] uppercase font-bold text-white/60 tracking-widest">kcal left</span>
           </div>
-          <div className="flex flex-col items-center gap-1 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
-            <Droplets className="h-5 w-5" />
-            <span className="font-bold">5/8</span>
-            <span className="text-xs text-white/70">glasses</span>
+          <div className="flex flex-col items-center justify-center gap-1 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors cursor-default">
+            <Droplets className="h-6 w-6 text-blue-400" />
+            <span className="text-xl font-black">5/8</span>
+            <span className="text-[10px] uppercase font-bold text-white/60 tracking-widest">glasses</span>
           </div>
-           <div className="flex flex-col items-center gap-1 p-3 rounded-lg bg-white/10 backdrop-blur-sm">
-            <Zap className="h-5 w-5" />
-            <span className="font-bold">Leg Day</span>
-            <span className="text-xs text-white/70">Next Up</span>
+           <div className="flex flex-col items-center justify-center gap-1 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors cursor-default">
+            <Zap className="h-6 w-6 text-yellow-400" />
+            <span className="text-xl font-black">Leg Day</span>
+            <span className="text-[10px] uppercase font-bold text-white/60 tracking-widest">Next Up</span>
           </div>
         </div>
       </CardContent>

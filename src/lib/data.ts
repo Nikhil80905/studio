@@ -16,6 +16,14 @@ export const exercises = [
     imageId: 'push-up',
   },
   {
+    category: 'Chest',
+    name: 'Incline Dumbbell Press',
+    description: 'Set a bench to a 30-45 degree angle. Hold dumbbells above your chest with a neutral or overhand grip. Lower the weights to your upper chest, then press back up.',
+    difficulty: 'Intermediate',
+    targetMuscles: ['Upper Chest', 'Shoulders'],
+    imageId: 'bench-press',
+  },
+  {
     category: 'Back',
     name: 'Pull-up',
     description: 'Grasp a pull-up bar with an overhand grip, hands wider than shoulders. Pull your body up until your chin is over the bar. Lower yourself back down with control.',
