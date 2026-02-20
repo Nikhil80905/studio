@@ -35,6 +35,7 @@ export default function ExercisesPage() {
             fill
             className="object-cover"
             data-ai-hint="fitness workout"
+            priority
           />
          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/40 z-0"></div>
         <div className="relative z-10">
@@ -79,7 +80,7 @@ export default function ExercisesPage() {
                               alt={exercise.name}
                               fill
                               className="object-cover transition-transform duration-300 group-hover:scale-105"
-                              data-ai-hint={image.imageHint}
+                              data-ai-hint={image.imageHint.split(' ').slice(0, 2).join(' ')}
                             />
                           )}
                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
@@ -116,7 +117,7 @@ export default function ExercisesPage() {
                                 View Demo
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="sm:max-w-[425px]">
+                            <DialogContent className="sm:max-w-[600px]">
                               <DialogHeader>
                                 <DialogTitle className="flex items-center gap-2">
                                   <Info className="h-5 w-5 text-primary" />
@@ -127,16 +128,18 @@ export default function ExercisesPage() {
                                 </DialogDescription>
                               </DialogHeader>
                               <div className="grid gap-4 py-4">
-                                <div className="relative aspect-video rounded-lg overflow-hidden border">
-                                   {image && (
-                                      <Image
-                                        src={image.imageUrl}
-                                        alt={exercise.name}
-                                        fill
-                                        className="object-cover"
-                                        data-ai-hint={image.imageHint}
-                                      />
-                                    )}
+                                <div className="relative aspect-video rounded-lg overflow-hidden border bg-black">
+                                   <video 
+                                      controls 
+                                      className="w-full h-full object-cover"
+                                      poster={image?.imageUrl}
+                                      autoPlay
+                                      muted
+                                      loop
+                                    >
+                                      <source src="https://assets.mixkit.co/videos/preview/mixkit-man-working-out-with-dumbbells-at-the-gym-2342-large.mp4" type="video/mp4" />
+                                      Your browser does not support the video tag.
+                                    </video>
                                 </div>
                                 <div className="space-y-4">
                                   <div>
@@ -153,7 +156,7 @@ export default function ExercisesPage() {
                                     <div>
                                       <h4 className="font-bold text-sm mb-1 uppercase tracking-wider text-muted-foreground">Target</h4>
                                       <div className="flex flex-wrap gap-1">
-                                         {exercise.targetMuscles.map(m => <Badge key={m} variant="outline">{m}</Badge>)}
+                                         {exercise.targetMuscles.map(m => <Badge key={m} variant="outline" className="text-[10px]">{m}</Badge>)}
                                       </div>
                                     </div>
                                   </div>

@@ -1,6 +1,5 @@
-
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { dietPlans } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ForkKnife } from 'lucide-react';
@@ -16,10 +15,7 @@ export default function HomePage() {
         <div className="absolute -left-20 -top-20 h-40 w-40 rounded-full bg-primary/5 blur-2xl"></div>
         <div className="absolute -right-20 -bottom-20 h-40 w-40 rounded-full bg-secondary/5 blur-2xl"></div>
         
-        <div 
-          className="hidden md:block absolute top-0 left-1/4 w-full h-full bg-no-repeat opacity-10 dark:opacity-[0.03]"
-          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%239C92AC' fillOpacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
-        ></div>
+        <div className="hidden md:block absolute top-0 left-1/4 w-full h-full bg-no-repeat opacity-10 dark:opacity-[0.03] bg-grid-pattern"></div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 items-center">
           <div className="p-8 md:p-12 text-center md:text-left">
@@ -43,6 +39,7 @@ export default function HomePage() {
                 fill
                 className="object-cover"
                 data-ai-hint={heroImage.imageHint}
+                priority
               />
             )}
              <div className="absolute inset-0 bg-gradient-to-l from-background/0 via-background/20 to-background/100"></div>
@@ -73,14 +70,14 @@ export default function HomePage() {
               const image = PlaceHolderImages.find((img) => img.id === plan.imageId);
               return (
                   <Card key={plan.title} className="card-hover grid md:grid-cols-2 overflow-hidden">
-                      <div className="relative aspect-[4/3] md:aspect-auto w-full h-full">
+                      <div className="relative aspect-[4/3] md:aspect-auto w-full h-full min-h-[200px]">
                           {image && (
                               <Image 
                                   src={image.imageUrl}
                                   alt={plan.title}
                                   fill
                                   className="object-cover"
-                                  data-ai-hint={image.imageHint}
+                                  data-ai-hint={plan.imageId.split('-').slice(0, 2).join(' ')}
                               />
                           )}
                       </div>
