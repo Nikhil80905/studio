@@ -48,6 +48,14 @@ export const exercises = [
     imageId: 'back-row',
   },
   {
+    category: 'Back',
+    name: 'Seated Cable Row',
+    description: 'Sit at a rowing machine with feet on the pads. Grip the handle and pull towards your abdomen while keeping your back straight and chest out.',
+    difficulty: 'Beginner',
+    targetMuscles: ['Back', 'Forearms'],
+    imageId: 'back-row',
+  },
+  {
     category: 'Legs',
     name: 'Squat',
     description: 'Stand with feet shoulder-width apart. Lower your hips back and down as if sitting in a chair. Keep your chest up and knees over toes. Drive through heels to return to standing.',
@@ -72,6 +80,14 @@ export const exercises = [
     imageId: 'leg-press',
   },
   {
+    category: 'Legs',
+    name: 'Romanian Deadlift',
+    description: 'Hold a barbell or dumbbells at hip height. Hinge at your hips, lowering the weights along your legs until you feel a stretch in your hamstrings. Return to upright.',
+    difficulty: 'Intermediate',
+    targetMuscles: ['Hamstrings', 'Glutes', 'Lower Back'],
+    imageId: 'deadlift',
+  },
+  {
     category: 'Shoulders',
     name: 'Overhead Press',
     description: 'Stand with feet shoulder-width apart. Hold a barbell at shoulder height. Press the bar directly overhead until arms are locked, then lower it back to shoulders.',
@@ -86,6 +102,14 @@ export const exercises = [
     difficulty: 'Beginner',
     targetMuscles: ['Shoulders'],
     imageId: 'lateral-raise',
+  },
+  {
+    category: 'Shoulders',
+    name: 'Face Pulls',
+    description: 'Use a rope attachment on a cable machine set to face height. Pull the rope towards your forehead, pulling the ends apart to engage the rear deltoids.',
+    difficulty: 'Intermediate',
+    targetMuscles: ['Rear Delts', 'Upper Back'],
+    imageId: 'shoulder-press',
   },
   {
     category: 'Arms',
@@ -104,6 +128,14 @@ export const exercises = [
     imageId: 'tricep-extension',
   },
   {
+    category: 'Arms',
+    name: 'Hammer Curl',
+    description: 'Hold dumbbells with palms facing each other (neutral grip). Curl the weights while keeping the neutral grip to target the brachialis and forearms.',
+    difficulty: 'Beginner',
+    targetMuscles: ['Biceps', 'Brachialis', 'Forearms'],
+    imageId: 'bicep-curl',
+  },
+  {
     category: 'Abs',
     name: 'Plank',
     description: 'Lie face down, resting on your forearms and toes. Keep your body in a straight line from head to heels. Engage your core and hold for time.',
@@ -120,11 +152,27 @@ export const exercises = [
     imageId: 'russian-twist',
   },
   {
+    category: 'Abs',
+    name: 'Leg Raises',
+    description: 'Lie on your back with legs straight. Lift your legs toward the ceiling until they are vertical, then lower them slowly without letting them touch the floor.',
+    difficulty: 'Intermediate',
+    targetMuscles: ['Lower Abs', 'Hip Flexors'],
+    imageId: 'plank',
+  },
+  {
     category: 'Cardio',
     name: 'Running',
     description: 'Maintain an upright posture, land on your mid-foot, and keep a steady breathing rhythm. Swing arms naturally at your sides.',
     difficulty: 'Beginner',
     targetMuscles: ['Full Body'],
+    imageId: 'running',
+  },
+  {
+    category: 'Cardio',
+    name: 'Jump Rope',
+    description: 'Keep your elbows close to your ribs and use your wrists to turn the rope. Jump just high enough to clear the rope on the balls of your feet.',
+    difficulty: 'Beginner',
+    targetMuscles: ['Full Body', 'Calves'],
     imageId: 'running',
   },
   {

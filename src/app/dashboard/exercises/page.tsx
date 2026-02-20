@@ -17,7 +17,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { PlayCircle, Dumbbell, Target, Info } from 'lucide-react';
 
@@ -26,17 +25,17 @@ const categories = [
   ...Array.from(new Set(exercises.map((e) => e.category))),
 ];
 
+type Exercise = typeof exercises[0];
+
 export default function ExercisesPage() {
   const [mounted, setMounted] = useState(false);
+  const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
 
-  // Prevent hydration mismatches with Radix Dialogs
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   return (
     <div className="space-y-8 animate-fade-in-up">
@@ -124,84 +123,15 @@ export default function ExercisesPage() {
                         </div>
                         
                         <div className="mt-auto">
-                          <Dialog>
-                            <DialogTrigger asChild>
-                              <Button className="w-full gap-2 font-black shadow-lg shadow-primary/20 transition-all active:scale-95" variant="default" size="sm">
-                                <PlayCircle className="h-4 w-4" />
-                                WATCH DEMO
-                              </Button>
-                            </DialogTrigger>
-                            <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden border-none bg-black/95 backdrop-blur-xl">
-                              <DialogHeader className="sr-only">
-                                <DialogTitle>{exercise.name} Demo</DialogTitle>
-                                <DialogDescription>Video demonstration and instructions for {exercise.name}.</DialogDescription>
-                              </DialogHeader>
-                              
-                              <div className="relative aspect-video w-full group">
-                                <video 
-                                  className="w-full h-full object-cover"
-                                  controls
-                                  autoPlay
-                                  muted
-                                  loop
-                                  playsInline
-                                  poster={image?.imageUrl}
-                                >
-                                  <source src="https://assets.mixkit.co/videos/preview/mixkit-man-working-out-with-dumbbells-at-the-gym-2342-large.mp4" type="video/mp4" />
-                                  Your browser does not support the video tag.
-                                </video>
-                                <div className="absolute top-0 left-0 w-full p-8 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none">
-                                   <div className="flex items-center justify-between">
-                                      <h2 className="text-3xl font-black text-white flex items-center gap-3 drop-shadow-md">
-                                          <Dumbbell className="h-8 w-8 text-primary" />
-                                          {exercise.name}
-                                      </h2>
-                                      <Badge className="bg-primary/20 backdrop-blur-md border-primary/40 text-primary-foreground uppercase font-black tracking-widest text-xs px-4 py-1">
-                                          HD DEMO
-                                      </Badge>
-                                   </div>
-                                </div>
-                              </div>
-                              
-                              <div className="p-8 bg-background">
-                                <div className="flex items-center gap-6 mb-8 pb-6 border-b border-border/50">
-                                   <div className="flex flex-col gap-1">
-                                      <span className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Difficulty</span>
-                                      <Badge className="px-4 py-1 font-bold bg-primary/10 text-primary border-primary/20">{exercise.difficulty}</Badge>
-                                   </div>
-                                   <div className="flex flex-col gap-1">
-                                      <span className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Category</span>
-                                      <span className="text-foreground font-black text-lg">{exercise.category}</span>
-                                   </div>
-                                </div>
-
-                                <div className="grid md:grid-cols-5 gap-8">
-                                  <div className="md:col-span-3 space-y-4">
-                                    <h4 className="font-black text-xs uppercase tracking-widest text-primary flex items-center gap-2">
-                                       <Info className="h-4 w-4" />
-                                       Execution Instructions
-                                    </h4>
-                                    <p className="text-lg leading-relaxed text-foreground/80 font-medium">
-                                      {exercise.description}
-                                    </p>
-                                  </div>
-                                  <div className="md:col-span-2 space-y-4">
-                                    <h4 className="font-black text-xs uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-                                       <Target className="h-4 w-4" />
-                                       Primary Targets
-                                    </h4>
-                                    <div className="flex flex-wrap gap-2">
-                                         {exercise.targetMuscles.map(m => (
-                                           <Badge key={m} variant="secondary" className="px-3 py-1.5 font-bold bg-accent hover:bg-accent/80 transition-colors">
-                                              {m}
-                                           </Badge>
-                                         ))}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </DialogContent>
-                          </Dialog>
+                          <Button 
+                            onClick={() => setSelectedExercise(exercise)}
+                            className="w-full gap-2 font-black shadow-lg shadow-primary/20 transition-all active:scale-95" 
+                            variant="default" 
+                            size="sm"
+                          >
+                            <PlayCircle className="h-4 w-4" />
+                            WATCH DEMO
+                          </Button>
                         </div>
                       </div>
                     </Card>
@@ -211,6 +141,83 @@ export default function ExercisesPage() {
           </TabsContent>
         ))}
       </Tabs>
+
+      {/* Shared Demo Dialog */}
+      <Dialog open={!!selectedExercise} onOpenChange={(open) => !open && setSelectedExercise(null)}>
+        {selectedExercise && (
+          <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden border-none bg-black/95 backdrop-blur-xl">
+            <DialogHeader className="sr-only">
+              <DialogTitle>{selectedExercise.name} Demo</DialogTitle>
+              <DialogDescription>Video demonstration and instructions for {selectedExercise.name}.</DialogDescription>
+            </DialogHeader>
+            
+            <div className="relative aspect-video w-full group">
+              <video 
+                key={selectedExercise.name} // Force re-render of video on change
+                className="w-full h-full object-cover"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={PlaceHolderImages.find(img => img.id === selectedExercise.imageId)?.imageUrl}
+              >
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-man-working-out-with-dumbbells-at-the-gym-2342-large.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute top-0 left-0 w-full p-8 bg-gradient-to-b from-black/90 via-black/40 to-transparent pointer-events-none">
+                 <div className="flex items-center justify-between">
+                    <h2 className="text-3xl font-black text-white flex items-center gap-3 drop-shadow-md">
+                        <Dumbbell className="h-8 w-8 text-primary" />
+                        {selectedExercise.name}
+                    </h2>
+                    <Badge className="bg-primary/20 backdrop-blur-md border-primary/40 text-primary-foreground uppercase font-black tracking-widest text-xs px-4 py-1">
+                        HD DEMO
+                    </Badge>
+                 </div>
+              </div>
+            </div>
+            
+            <div className="p-8 bg-background">
+              <div className="flex items-center gap-6 mb-8 pb-6 border-b border-border/50">
+                 <div className="flex flex-col gap-1">
+                    <span className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Difficulty</span>
+                    <Badge className="px-4 py-1 font-bold bg-primary/10 text-primary border-primary/20">{selectedExercise.difficulty}</Badge>
+                 </div>
+                 <div className="flex flex-col gap-1">
+                    <span className="text-[10px] uppercase font-black text-muted-foreground tracking-widest">Category</span>
+                    <span className="text-foreground font-black text-lg">{selectedExercise.category}</span>
+                 </div>
+              </div>
+
+              <div className="grid md:grid-cols-5 gap-8">
+                <div className="md:col-span-3 space-y-4">
+                  <h4 className="font-black text-xs uppercase tracking-widest text-primary flex items-center gap-2">
+                     <Info className="h-4 w-4" />
+                     Execution Instructions
+                  </h4>
+                  <p className="text-lg leading-relaxed text-foreground/80 font-medium">
+                    {selectedExercise.description}
+                  </p>
+                </div>
+                <div className="md:col-span-2 space-y-4">
+                  <h4 className="font-black text-xs uppercase tracking-widest text-muted-foreground flex items-center gap-2">
+                     <Target className="h-4 w-4" />
+                     Primary Targets
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                       {selectedExercise.targetMuscles.map(m => (
+                         <Badge key={m} variant="secondary" className="px-3 py-1.5 font-bold bg-accent hover:bg-accent/80 transition-colors">
+                            {m}
+                         </Badge>
+                       ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
     </div>
   );
 }
