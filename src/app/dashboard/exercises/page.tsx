@@ -4,14 +4,21 @@ import Image from 'next/image';
 import { exercises } from '@/lib/data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { PlayCircle, Info } from 'lucide-react';
 
 const categories = [
   'All',
@@ -35,15 +42,14 @@ export default function ExercisesPage() {
             Exercise Library
           </h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            The fitness that fits you. Browse our collection of exercises to
-            build your perfect workout.
+            Master your form. Explore our curated list of exercises with detailed instructions for every muscle group.
           </p>
         </div>
       </div>
 
       <Tabs defaultValue="All" className="w-full">
-        <div className="flex justify-center">
-          <TabsList>
+        <div className="flex justify-center overflow-x-auto pb-4">
+          <TabsList className="bg-muted/50">
             {categories.map((category) => (
               <TabsTrigger key={category} value={category}>
                 {category}
@@ -80,25 +86,81 @@ export default function ExercisesPage() {
                         </div>
                       
                       <div className="relative flex flex-1 flex-col justify-between p-4 !pb-2 z-10 -mt-20">
-                       <div>
+                       <div className="mb-4">
                           <CardTitle className="text-lg text-white">
                             {exercise.name}
                           </CardTitle>
-                           <Badge variant="secondary" className="mt-2 text-xs">
-                            {exercise.difficulty}
-                          </Badge>
+                          <div className="flex items-center gap-2 mt-2">
+                             <Badge variant="secondary" className="text-[10px] uppercase font-bold tracking-tight px-2 py-0">
+                              {exercise.difficulty}
+                            </Badge>
+                             <Badge variant="outline" className="text-[10px] text-white/80 border-white/20 uppercase font-bold tracking-tight px-2 py-0">
+                              {exercise.category}
+                            </Badge>
+                          </div>
                         </div>
-                        <div className="mt-4">
-                          <h4 className="text-xs font-semibold uppercase text-white/70">
-                            Target Muscles
-                          </h4>
-                          <div className="flex flex-wrap gap-1 mt-2">
+                        
+                        <div className="mt-auto">
+                          <div className="flex flex-wrap gap-1 mb-4">
                             {exercise.targetMuscles.map((muscle) => (
-                              <Badge key={muscle} variant="outline" className="text-white/90 border-white/30 text-xs">
+                              <Badge key={muscle} variant="outline" className="text-[10px] text-white/90 border-white/30">
                                 {muscle}
                               </Badge>
                             ))}
                           </div>
+                          
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <Button className="w-full gap-2 text-xs font-bold" variant="secondary" size="sm">
+                                <PlayCircle className="h-4 w-4" />
+                                View Demo
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-[425px]">
+                              <DialogHeader>
+                                <DialogTitle className="flex items-center gap-2">
+                                  <Info className="h-5 w-5 text-primary" />
+                                  {exercise.name} Instructions
+                                </DialogTitle>
+                                <DialogDescription className="pt-2">
+                                  Follow these steps for perfect form and maximum efficiency.
+                                </DialogDescription>
+                              </DialogHeader>
+                              <div className="grid gap-4 py-4">
+                                <div className="relative aspect-video rounded-lg overflow-hidden border">
+                                   {image && (
+                                      <Image
+                                        src={image.imageUrl}
+                                        alt={exercise.name}
+                                        fill
+                                        className="object-cover"
+                                        data-ai-hint={image.imageHint}
+                                      />
+                                    )}
+                                </div>
+                                <div className="space-y-4">
+                                  <div>
+                                    <h4 className="font-bold text-sm mb-1 uppercase tracking-wider text-muted-foreground">Description</h4>
+                                    <p className="text-sm leading-relaxed text-foreground/90">
+                                      {exercise.description}
+                                    </p>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-4 pt-2">
+                                    <div>
+                                      <h4 className="font-bold text-sm mb-1 uppercase tracking-wider text-muted-foreground">Level</h4>
+                                      <Badge>{exercise.difficulty}</Badge>
+                                    </div>
+                                    <div>
+                                      <h4 className="font-bold text-sm mb-1 uppercase tracking-wider text-muted-foreground">Target</h4>
+                                      <div className="flex flex-wrap gap-1">
+                                         {exercise.targetMuscles.map(m => <Badge key={m} variant="outline">{m}</Badge>)}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
                         </div>
                       </div>
                     </Card>

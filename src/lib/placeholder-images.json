@@ -25,6 +25,12 @@
       "imageHint": "deadlift weightlifting"
     },
     {
+      "id": "back-row",
+      "description": "Person performing a row.",
+      "imageUrl": "https://images.unsplash.com/photo-1590239091807-7427909c855e?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "bent over row"
+    },
+    {
       "id": "squat",
       "description": "Person performing a squat.",
       "imageUrl": "https://images.unsplash.com/photo-1594737625785-a62024207937?q=80&w=2070&auto=format&fit=crop",
@@ -37,16 +43,46 @@
       "imageHint": "lunge exercise"
     },
     {
+      "id": "leg-press",
+      "description": "Leg press machine in use.",
+      "imageUrl": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "leg press machine"
+    },
+    {
+      "id": "shoulder-press",
+      "description": "Person doing overhead press.",
+      "imageUrl": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop",
+      "imageHint": "overhead press"
+    },
+    {
+      "id": "lateral-raise",
+      "description": "Person performing lateral raises.",
+      "imageUrl": "https://images.unsplash.com/photo-1591117207239-788cd4740c67?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "lateral raise"
+    },
+    {
       "id": "bicep-curl",
       "description": "Person doing a bicep curl.",
       "imageUrl": "https://images.unsplash.com/photo-1603233720078-5691031c54b7?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "bicep curl"
     },
     {
+      "id": "tricep-extension",
+      "description": "Person doing tricep extensions.",
+      "imageUrl": "https://images.unsplash.com/photo-1530822847156-5df684ec5313?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "tricep extension"
+    },
+    {
       "id": "plank",
       "description": "Person holding a plank position.",
       "imageUrl": "https://images.unsplash.com/photo-1623949987824-3448347a3788?q=80&w=2070&auto=format&fit=crop",
       "imageHint": "plank core"
+    },
+    {
+      "id": "russian-twist",
+      "description": "Person doing russian twists.",
+      "imageUrl": "https://images.unsplash.com/photo-1571019613576-2b22c76fd955?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "core workout"
     },
     {
       "id": "running",
